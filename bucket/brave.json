@@ -1,5 +1,5 @@
 {
-    "version": "1.14.81",
+    "version": "1.14.84",
     "description": "Secure, Fast & Private Web Browser with Adblocker",
     "homepage": "https://brave.com",
     "license": {
@@ -8,12 +8,12 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/brave/brave-browser/releases/download/v1.14.81/brave_installer-x64.exe#/dl.7z",
-            "hash": "d9e7dd4f7597b6cec73dd49a23c52f4da87a8c25ccf837b8c3a8c7a70895606f"
+            "url": "https://github.com/brave/brave-browser/releases/download/v1.14.84/BraveBrowserStandaloneSetup.exe#/dl.exe",
+            "hash": "d61d194a70ffc6d2539a7ad6c7c293027796088320b8e0e527b270cda84d75ea"
         },
         "32bit": {
-            "url": "https://github.com/brave/brave-browser/releases/download/v1.14.81/brave_installer-ia32.exe#/dl.7z",
-            "hash": "683a5f4e1295cb26acbff648864939e529243e1f6df4451a857aa8c2ed4794fe"
+            "url": "https://github.com/brave/brave-browser/releases/download/v1.14.84/BraveBrowserStandaloneSetup32.exe#/dl.exe",
+            "hash": "7408d26607bcea3c451fb14eaaa347c2a08e927390ac9b1b2a5c6a24c098124a"
         }
     },
     "pre_install": [
@@ -38,10 +38,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/brave/brave-browser/releases/download/v$version/brave_installer-x64.exe#/dl.7z"
+                "url": "https://github.com/brave/brave-browser/releases/download/v$version/BraveBrowserStandaloneSetup.exe#/dl.exe"
             },
             "32bit": {
-                "url": "https://github.com/brave/brave-browser/releases/download/v$version/brave_installer-ia32.exe#/dl.7z"
+                "url": "https://github.com/brave/brave-browser/releases/download/v$version/BraveBrowserStandaloneSetup32.exe#/dl.exe"
             }
         }
     }
