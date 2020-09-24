@@ -1,0 +1,48 @@
+{
+    "version": "1.14.84",
+    "description": "Secure, Fast & Private Web Browser with Adblocker",
+    "homepage": "https://brave.com",
+    "license": {
+        "identifier": "Freeware,BSD-3-Clause,GPL-3.0-only,...",
+        "url": "https://github.com/brave/brave-browser/blob/master/LICENSE"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/brave/brave-browser/releases/download/v1.14.84/BraveBrowserStandaloneSetup.exe#/dl.exe",
+            "hash": "d61d194a70ffc6d2539a7ad6c7c293027796088320b8e0e527b270cda84d75ea"
+        },
+        "32bit": {
+            "url": "https://github.com/brave/brave-browser/releases/download/v1.14.84/BraveBrowserStandaloneSetup32.exe#/dl.exe",
+            "hash": "7408d26607bcea3c451fb14eaaa347c2a08e927390ac9b1b2a5c6a24c098124a"
+        }
+    },
+    "pre_install": [
+        "$time=(Get-Date)",
+        "$guid=\"{AFE6A462-C574-4B8A-AF43-4CC60DF4563B}\"",
+        "$extract=(Start-Process -FilePath \"$dir\\dl.exe\" -ArgumentList '-Extract' -PassThru)",
+        "While (-not (Get-ChildItem -Path \"$env:TEMP\\GUM*.tmp\" -Depth 1 -Filter \"brave_installer_85_$($version -replace '\\.', '_').exe.$guid\" | Where-Object { $_.LastAccessTime -gt $time})) {}",
+        "$7zFile=(Get-ChildItem -Path \"$env:TEMP\\GUM*.tmp\" -Depth 1 -Filter \"brave_installer_85_$($version -replace '\\.', '_').exe.$guid\" | Sort-Object $_.LastAccessTime -Descending | Select-Object -First 1).FullName",
+        "Do { $7zFileSize=(Get-Item \"$7zFile\").Length ; Start-Sleep -Milliseconds 250 } While (-not ($7zFileSize -eq (Get-Item \"$7zFile\").Length))",
+        "Stop-Process -Id $extract.Id",
+        "Expand-7zipArchive -Path \"$7zFile\" -DestinationPath \"$dir\"",
+        "Expand-7zipArchive -Path \"$dir\\chrome.7z\" -ExtractDir 'Chrome-bin' -Removal",
+        "Remove-Item -Force -Path \"$dir\\dl.exe\""
+    ],
+    "bin": "brave.exe",
+    "shortcuts": [
+        [
+            "brave.exe",
+            "Brave"
+        ]
+    ],
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/brave/brave-browser/releases/download/v$version/BraveBrowserStandaloneSetup.exe#/dl.exe"
+            },
+            "32bit": {
+                "url": "https://github.com/brave/brave-browser/releases/download/v$version/BraveBrowserStandaloneSetup32.exe#/dl.exe"
+            }
+        }
+    }
+}
