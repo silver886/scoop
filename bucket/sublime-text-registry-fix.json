@@ -2,10 +2,11 @@
     "version": "1.0.0",
     "description": "Fix Sublime Text registry. This will always open Sublime Text in new window and set Sublime Text as default editor and replace notepad.exe.",
     "depends": "extras/sublime-text",
-    "url": "https://raw.githubusercontent.com/silver886/scoop-silver886/master/scripts/sublime-text-registry-fix/sublime-text-notepad.bat",
-    "hash": "95a121240873f84fa3a0da26436f6590cb2df6387fc810debedcde10fcf1acaa",
+    "url": "https://raw.githubusercontent.com/silver886/scoop/master/scripts/sublime-text-registry-fix/sublime-text-notepad.bat",
+    "hash": "3d7104f2df6981f89ada33689aec3c72e77f0f484e79108bb94e15b7c73b113c",
     "installer": {
         "script": [
+            "if (-not (is_admin)) { error 'This package requires admin privileges to install'; break }",
             "$sublime = \"$scoopdir\\apps\\sublime-text\\current\\sublime_text.exe\"",
             "$registryPath = 'Registry::HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\Notepad.exe'",
             "$sublimeBat = \"$dir\\sublime-text-notepad.bat\"",
@@ -23,6 +24,7 @@
     },
     "uninstaller": {
         "script": [
+            "if (-not (is_admin)) { error 'This package requires admin privileges to uninstall'; break }",
             "$sublime = \"$scoopdir\\apps\\sublime-text\\current\\sublime_text.exe\"",
             "$registryPath = 'Registry::HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\Notepad.exe'",
             "Remove-Item -Force -Recurse -Path \"$registryPath\"",
