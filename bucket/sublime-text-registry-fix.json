@@ -1,5 +1,5 @@
 {
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Fix Sublime Text registry. This will always open Sublime Text in new window and set Sublime Text as default editor and replace notepad.exe.",
     "depends": "extras/sublime-text",
     "url": "https://raw.githubusercontent.com/silver886/scoop/master/scripts/sublime-text-registry-fix/sublime-text-notepad.bat",
@@ -13,7 +13,7 @@
             "$content = (Get-Content $sublimeBat).Replace('$sublime', $sublime)",
             "Set-Content -Force -Path $sublimeBat -Value $content -Encoding Ascii",
             "[void](New-Item -Force -Path \"$registryPath\")",
-            "[void](New-ItemProperty -Force -Path \"$registryPath\" -Name 'Debugger' -Value \"`\"$sublimeBat`\"\")",
+            "[void](New-ItemProperty -Force -Path \"$registryPath\" -Name 'Debugger' -PropertyType String -Value \"`\"$sublimeBat`\"\")",
             "$registryPath = 'Registry::HKCU\\Software\\Classes\\*\\shell\\Open with &Sublime\\command'",
             "Set-Item -Force -Path \"$registryPath\" -Value \"`\"$sublime`\" -n `\"%1`\"\"",
             "$registryPath = 'Registry::HKCU\\Software\\Classes\\Directory\\shell\\Open with &Sublime\\command'",
