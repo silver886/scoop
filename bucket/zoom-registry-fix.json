@@ -1,0 +1,30 @@
+{
+    "version": "1.0.0",
+    "description": "Fix Zoom registry. This enables the ability to open Zoom with URL.",
+    "depends": "extras/zoom",
+    "url": "https://example.com",
+    "installer": {
+        "script": [
+            "if (-not (is_admin)) { error 'This package requires admin privileges to install'; break }",
+            "$zoom = \"$scoopdir\\apps\\zoom\\current\\Zoom.exe\"",
+            "$registryPath = 'Registry::HKCR\\zoommtg'",
+            "[void](New-Item -Force -Path \"$registryPath\")",
+            "Set-Item -Force -Path \"$registryPath\" -Value 'URL:Zoom Launcher'",
+            "[void](New-ItemProperty -Force -Path \"$registryPath\" -Name 'URL Protocol' -PropertyType String -Value '')",
+            "[void](New-ItemProperty -Force -Path \"$registryPath\" -Name 'UseOriginalUrlEncoding' -PropertyType DWord -Value '1')",
+            "$registryPath = 'Registry::HKCR\\zoommtg\\DefaultIcon'",
+            "[void](New-Item -Force -Path \"$registryPath\")",
+            "Set-Item -Force -Path \"$registryPath\" -Value \"`\"$zoom`\",1\"",
+            "$registryPath = 'Registry::HKCR\\zoommtg\\shell\\open\\command'",
+            "[void](New-Item -Force -Path \"$registryPath\")",
+            "Set-Item -Force -Path \"$registryPath\" -Value \"`\"$zoom`\" `\"--url=%1`\"\""
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "if (-not (is_admin)) { error 'This package requires admin privileges to uninstall'; break }",
+            "$registryPath = 'Registry::HKCR\\zoommtg'",
+            "Remove-Item -Force -Recurse -Path \"$registryPath\""
+        ]
+    }
+}
