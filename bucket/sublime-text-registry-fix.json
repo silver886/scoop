@@ -5,28 +5,28 @@
     "url": "https://example.com",
     "installer": {
         "script": [
-            "$sublime=\"$scoopdir\\apps\\sublime-text\\current\\sublime_text.exe\"",
-            "$registryPath='Registry::HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\Notepad.exe'",
+            "$sublime = \"$scoopdir\\apps\\sublime-text\\current\\sublime_text.exe\"",
+            "$registryPath = 'Registry::HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\Notepad.exe'",
             "New-Item -Force -Path \"$registryPath\"",
             "New-ItemProperty -Force -Path \"$registryPath\" -Name 'Debugger' -Value \"`\"$sublime`\" -n `\"%1`\"\"",
-            "$registryPath='Registry::HKCU\\Software\\Classes\\*\\shell\\Open with &Sublime\\command'",
+            "$registryPath = 'Registry::HKCU\\Software\\Classes\\*\\shell\\Open with &Sublime\\command'",
             "Set-Item -Force -Path \"$registryPath\" -Value \"`\"$sublime`\" -n `\"%1`\"\"",
-            "$registryPath='Registry::HKCU\\Software\\Classes\\Directory\\shell\\Open with &Sublime\\command'",
+            "$registryPath = 'Registry::HKCU\\Software\\Classes\\Directory\\shell\\Open with &Sublime\\command'",
             "Set-Item -Force -Path \"$registryPath\" -Value \"`\"$sublime`\" -n `\"%1`\"\"",
-            "$registryPath='Registry::HKCU\\Software\\Classes\\Directory\\Background\\shell\\Open with &Sublime\\command'",
+            "$registryPath = 'Registry::HKCU\\Software\\Classes\\Directory\\Background\\shell\\Open with &Sublime\\command'",
             "Set-Item -Force -Path \"$registryPath\" -Value \"`\"$sublime`\" -n `\"%V`\"\""
         ]
     },
     "uninstaller": {
         "script": [
-            "$sublime=\"$scoopdir\\apps\\sublime-text\\current\\sublime_text.exe\"",
-            "$registryPath='Registry::HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\Notepad.exe'",
+            "$sublime = \"$scoopdir\\apps\\sublime-text\\current\\sublime_text.exe\"",
+            "$registryPath = 'Registry::HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\Notepad.exe'",
             "Remove-Item -Force -Recurse -Path \"$registryPath\"",
-            "$registryPath='Registry::HKCU\\Software\\Classes\\*\\shell\\Open with &Sublime\\command'",
+            "$registryPath = 'Registry::HKCU\\Software\\Classes\\*\\shell\\Open with &Sublime\\command'",
             "Set-Item -Force -Path \"$registryPath\" -Value \"`\"$sublime`\" '%1'\"",
-            "$registryPath='Registry::HKCU\\Software\\Classes\\Directory\\shell\\Open with &Sublime\\command'",
+            "$registryPath = 'Registry::HKCU\\Software\\Classes\\Directory\\shell\\Open with &Sublime\\command'",
             "Set-Item -Force -Path \"$registryPath\" -Value \"`\"$sublime`\" '%1'\"",
-            "$registryPath='Registry::HKCU\\Software\\Classes\\Directory\\Background\\shell\\Open with &Sublime\\command'",
+            "$registryPath = 'Registry::HKCU\\Software\\Classes\\Directory\\Background\\shell\\Open with &Sublime\\command'",
             "Set-Item -Force -Path \"$registryPath\" -Value \"`\"$sublime`\" '%V'\""
         ]
     }
