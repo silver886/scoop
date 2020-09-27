@@ -1,0 +1,76 @@
+{
+    "version": "7.6.1.33485",
+    "description": "Cyberduck is a libre server and cloud storage browser for Mac and Windows with support for FTP, SFTP, WebDAV, Amazon S3, OpenStack Swift, Backblaze B2, Microsoft Azure & OneDrive, Google Drive and Dropbox.",
+    "homepage": "https://cyberduck.io/",
+    "license": {
+        "url": "https://cyberduck.io/license/"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://update.cyberduck.io/windows/Cyberduck-Installer-7.6.1.33485.exe#/dl.exe",
+            "hash": "d0122d2f3f815313c0f1b2e832ad9deb10cffbc78be30c7dd9cd1ae420711417"
+        }
+    },
+    "installer": {
+        "script": [
+            "if (-not (is_admin)) { error 'This package requires admin privileges to uninstall'; break }",
+            "Expand-DarkArchive -Path \"$dir\\dl.exe\" -DestinationPath \"$dir\\_tmp\" -Removal",
+            "@('Bonjour.msi') | ForEach-Object {",
+            "    Remove-Item \"$dir\\_tmp\\AttachedContainer\\$_\"",
+            "}",
+            "New-Item -Type Directory -Path \"$dir\\msi\" > $null",
+            "Get-ChildItem \"$dir\\_tmp\\AttachedContainer\\*.msi\" |",
+            "    ForEach-Object {",
+            "        Copy-Item -Path $_.FullName -Destination \"$dir\\msi\\$($_.Name.TrimStart('Cyberduck-')).msi\"",
+            "    }",
+            "Remove-Item \"$dir\\_tmp\" -Force -Recurse",
+            "Get-ChildItem \"$dir\\msi\\*.msi\" |",
+            "    ForEach-Object {",
+            "        Invoke-ExternalCommand msiexec -ArgumentList @(",
+            "            '/i',",
+            "            \"`\"$($_.FullName)`\"\",",
+            "            '/qn',",
+            "            '/norestart',",
+            "            \"INSTALLLOCATION=\"\"$dir\"\"\",",
+            "            'ARPSYSTEMCOMPONENT=0',",
+            "            'MSIFASTINSTALL=7'",
+            "        ) -ContinueExitCodes @{",
+            "            3010='This package requires restart to complete the installation.'",
+            "        } -RunAs > $null",
+            "    }"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "if (-not (is_admin)) { error 'This package requires admin privileges to uninstall'; break }",
+            "Get-ChildItem \"$dir\\msi\\*.msi\" |",
+            "    ForEach-Object {",
+            "        Invoke-ExternalCommand msiexec -ArgumentList @(",
+            "            '/x',",
+            "            \"`\"$($_.FullName)`\"\",",
+            "            '/qn',",
+            "            '/norestart',",
+            "            \"INSTALLLOCATION=\"\"$dir\"\"\",",
+            "            'ARPSYSTEMCOMPONENT=0',",
+            "            'MSIFASTINSTALL=7'",
+            "        ) -ContinueExitCodes @{",
+            "            3010='This package requires restart to complete the uninstallation.'",
+            "        } -RunAs > $null",
+            "    }"
+        ]
+    },
+    "bin": "Cyberduck.exe",
+    "shortcuts": [
+        [
+            "Cyberduck.exe",
+            "Cyberduck"
+        ]
+    ],
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://update.cyberduck.io/windows/Cyberduck-Installer-$version.exe#/dl.exe"
+            }
+        }
+    }
+}
