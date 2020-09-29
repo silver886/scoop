@@ -1,0 +1,25 @@
+{
+    "version": "3.0.1.0",
+    "description": "It lets you configure, monitor and update various server components.",
+    "homepage": "http://www.hpe.com/info/resttool",
+    "license": {
+        "identifier": "Unknown"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://downloads.hpe.com/pub/softlib2/software1/pubsw-windows/p1440367746/v177187/ilorest-3.0.1.0-8.x86_64.msi",
+            "hash": "9bcad65d64e5da026bd2c17db789734b11ec476284d0258d013f22d633625df0"
+        }
+    },
+    "bin": "ilorest.exe",
+    "shortcuts": [
+        [
+            "ilorest.exe",
+            "ilorest"
+        ]
+    ],
+    "checkver": {
+        "url": "https://support.hpe.com/hpsc/swd/public/detail?swItemId=MTX_d1c19551ffbb4b1b8f94587e22",
+        "regex": "<b>Version:([\\d.]+)</b>"
+    }
+}
