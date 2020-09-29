@@ -21,12 +21,5 @@
     "checkver": {
         "url": "https://support.hpe.com/hpsc/swd/public/detail?swItemId=MTX_d1c19551ffbb4b1b8f94587e22",
         "regex": "<b>Version:([\\d.]+)</b>"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://update.cyberduck.io/windows/Cyberduck-Installer-$version.exe#/dl.exe"
-            }
-        }
     }
 }
