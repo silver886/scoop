@@ -1,4 +1,5 @@
 {
+    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
     "version": "1.0.3",
     "description": "Fix Sublime Text registry. This will always open Sublime Text in new window and set Sublime Text as default editor and replace notepad.exe.",
     "depends": "extras/sublime-text",
