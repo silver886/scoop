@@ -1,4 +1,5 @@
 {
+    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
     "version": "3.0.1.0",
     "description": "It lets you configure, monitor and update various server components.",
     "homepage": "http://www.hpe.com/info/resttool",
