@@ -3,9 +3,7 @@
     "version": "3.0.1.0",
     "description": "It lets you configure, monitor and update various server components.",
     "homepage": "http://www.hpe.com/info/resttool",
-    "license": {
-        "identifier": "Unknown"
-    },
+    "license": "Proprietary",
     "architecture": {
         "64bit": {
             "url": "https://downloads.hpe.com/pub/softlib2/software1/pubsw-windows/p1440367746/v177187/ilorest-3.0.1.0-8.x86_64.msi",
