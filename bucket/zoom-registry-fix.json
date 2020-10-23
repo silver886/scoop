@@ -1,4 +1,5 @@
 {
+    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
     "version": "1.0.0",
     "description": "Fix Zoom registry. This enables the ability to open Zoom with URL.",
     "depends": "extras/zoom",
