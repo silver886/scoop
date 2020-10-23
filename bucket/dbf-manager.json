@@ -1,4 +1,5 @@
 {
+    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
     "version": "3.1.909",
     "description": "This is an advanced DBF data management solution for all database users.",
     "homepage": "https://dbfmanager.com/",
