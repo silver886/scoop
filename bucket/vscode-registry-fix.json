@@ -1,4 +1,5 @@
 {
+    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
     "version": "1.0.0",
     "description": "Fix Visual Studio Code registry. This will always open Visual Studio Code in new window.",
     "depends": "extras/vscode",
