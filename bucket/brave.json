@@ -1,5 +1,6 @@
 {
     "version": "1.14.84",
+    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
     "description": "Secure, Fast & Private Web Browser with Adblocker",
     "homepage": "https://brave.com",
     "license": {
