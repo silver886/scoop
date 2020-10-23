@@ -1,4 +1,5 @@
 {
+    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
     "version": "1.0.0",
     "description": "Fix Zoom registry. This enables the ability to open Zoom with URL.",
     "depends": "extras/zoom",
@@ -8,15 +9,15 @@
             "if (-not (is_admin)) { error 'This package requires admin privileges to install'; break }",
             "$zoom = \"$scoopdir\\apps\\zoom\\current\\Zoom.exe\"",
             "$registryPath = 'Registry::HKCR\\zoommtg'",
-            "[void](New-Item -Force -Path \"$registryPath\")",
+            "New-Item -Force -Path \"$registryPath\" > $null",
             "Set-Item -Force -Path \"$registryPath\" -Value 'URL:Zoom Launcher'",
-            "[void](New-ItemProperty -Force -Path \"$registryPath\" -Name 'URL Protocol' -PropertyType String -Value '')",
-            "[void](New-ItemProperty -Force -Path \"$registryPath\" -Name 'UseOriginalUrlEncoding' -PropertyType DWord -Value '1')",
+            "New-ItemProperty -Force -Path \"$registryPath\" -Name 'URL Protocol' -PropertyType String -Value '' > $null",
+            "New-ItemProperty -Force -Path \"$registryPath\" -Name 'UseOriginalUrlEncoding' -PropertyType DWord -Value '1' > $null",
             "$registryPath = 'Registry::HKCR\\zoommtg\\DefaultIcon'",
-            "[void](New-Item -Force -Path \"$registryPath\")",
+            "New-Item -Force -Path \"$registryPath\" > $null",
             "Set-Item -Force -Path \"$registryPath\" -Value \"`\"$zoom`\",1\"",
             "$registryPath = 'Registry::HKCR\\zoommtg\\shell\\open\\command'",
-            "[void](New-Item -Force -Path \"$registryPath\")",
+            "New-Item -Force -Path \"$registryPath\" > $null",
             "Set-Item -Force -Path \"$registryPath\" -Value \"`\"$zoom`\" `\"--url=%1`\"\""
         ]
     },
