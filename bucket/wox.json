@@ -17,6 +17,7 @@
             "Wox"
         ]
     ],
+    "persist": "UserData",
     "checkver": {
         "github": "https://github.com/Wox-launcher/Wox"
     },
