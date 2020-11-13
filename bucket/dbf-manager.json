@@ -15,6 +15,9 @@
     ],
     "checkver": {
         "url": "https://dbfmanager.com/en/download/",
-        "regex": "<td>([\\d.]+)</td>"
+        "regex": "<tr>(?s:.)*?DBF Manager(?s:.)*?<td>([\\d.]+)<\\/td>(?s:.)*?<\\/tr>"
+    },
+    "autoupdate": {
+        "url": "http://astersoft.com/files/dbfmanager.msi"
     }
 }
