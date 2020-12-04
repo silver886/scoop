@@ -1,6 +1,6 @@
 {
     "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
-    "version": "1.16.76",
+    "version": "1.17.75",
     "description": "Secure, Fast & Private Web Browser with Adblocker",
     "homepage": "https://brave.com",
     "license": {
@@ -9,12 +9,12 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/brave/brave-browser/releases/download/v1.16.76/BraveBrowserStandaloneSetup.exe#/dl.exe",
-            "hash": "a6bf1df2975552a4f1c8fa6cb106655d453c2b7f34f4d512cdbdedb3c70cfaad"
+            "url": "https://github.com/brave/brave-browser/releases/download/v1.17.75/BraveBrowserStandaloneSetup.exe#/dl.exe",
+            "hash": "6c1d5e0bacabab760f1687cd7570b3ecca01aa8dd46bae837682a28afb142f05"
         },
         "32bit": {
-            "url": "https://github.com/brave/brave-browser/releases/download/v1.16.76/BraveBrowserStandaloneSetup32.exe#/dl.exe",
-            "hash": "ca0be43d796abde8505e07aa50e762845cfe0bb467d721d5b02e07d3ebf0cfdc"
+            "url": "https://github.com/brave/brave-browser/releases/download/v1.17.75/BraveBrowserStandaloneSetup32.exe#/dl.exe",
+            "hash": "0a948e618637feabb1e13caa9753392e7cae3c75fc7b06e8b10b41e4065b7409"
         }
     },
     "installer": {
