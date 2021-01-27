@@ -1,0 +1,35 @@
+{
+    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
+    "version": "1.2.30.0",
+    "description": "This plugin allows you to use the AWS Command Line Interface (AWS CLI) to start and end sessions that connect you to your managed instances.",
+    "homepage": "https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html",
+    "license": "Proprietary",
+    "url": "https://s3.amazonaws.com/session-manager-downloads/plugin/1.2.30.0/windows/SessionManagerPluginSetup.exe#/dl.exe",
+    "hash": "ca923ce24c4e1fd0cad120e1c57fb45d57432589636480c753cc50eadd1dcebd",
+    "pre_install": [
+        "Expand-DarkArchive -Path \"$dir\\dl.exe\" -DestinationPath \"$dir\\_tmp\" -Removal"
+    ],
+    "architecture": {
+        "32bit": {
+            "installer": {
+                "script": [
+                    "Expand-MsiArchive -Path \"$dir\\_tmp\\AttachedContainer\\SessionManagerCLI_MSI_32.msi\" -DestinationPath \"$dir\" -ExtractDir 'Amazon\\SessionManagerPlugin\\bin'"
+                ]
+            }
+        },
+        "64bit": {
+            "installer": {
+                "script": [
+                    "Expand-MsiArchive -Path \"$dir\\_tmp\\AttachedContainer\\SessionManagerCLI_MSI_64.msi\" -DestinationPath \"$dir\" -ExtractDir 'Amazon\\SessionManagerPlugin\\bin'"
+                ]
+            }
+        }
+    },
+    "bin": "session-manager-plugin.exe",
+    "checkver": {
+        "regex": "<thead>\\s*<tr>\\s*<th>Version</th>\\s*<th>Release date</th>\\s*<th>Details</th>\\s*</tr>\\s*</thead>\\s*<tr>\\s*<td>([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://s3.amazonaws.com/session-manager-downloads/plugin/$version/windows/SessionManagerPluginSetup.exe#/dl.exe"
+    }
+}
