@@ -1,0 +1,43 @@
+{
+    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
+    "version": "1.0.0",
+    "description": "This script opens an SSH connection to ec2 instances via AWS SSM without the need to open any ssh port in you security groups.",
+    "homepage": "https://github.com/qoomon/aws-ssm-ec2-proxy-command",
+    "license": {
+        "identifier": "MIT",
+        "url": "https://github.com/qoomon/aws-ssm-ec2-proxy-command/blob/master/LICENSE"
+    },
+    "notes": [
+        "Example usage of this command.",
+        "ssh <INSTANCE_USER>@<INSTANCE_ID>[--<INSTANCE_REGION>] `",
+        "\t-i '~/.ssh/id_rsa' `",
+        "\t-o ProxyCommand='~/.ssh/aws-ssm-ec2-proxy-command.sh %h %r %p ~/.ssh/id_rsa.pub'",
+        "",
+        "Add SSH config entry for AWS EC2 instances to ~/.ssh/config and adjust key file path if needed.",
+        "host i-* mi-*",
+        "\tIdentityFile ~/.ssh/id_rsa",
+        "\tProxyCommand ~/.ssh/aws-ssm-ec2-proxy-command.sh %h %r %p ~/.ssh/id_rsa.pub",
+        "\tStrictHostKeyChecking no"
+    ],
+    "url": "https://github.com/qoomon/aws-ssm-ec2-proxy-command/archive/v1.0.0.zip#dl.zip",
+    "hash": "c879f72e000354160e09cdcf20a24108db43766b66dbac08e67ad13e8b4a2c6b",
+    "installer": {
+        "script": [
+            "Copy-Item -Path \"$dir\\aws-ssm-ec2-proxy-command-$version\\ec2-instance-connect\\aws-ssm-ec2-proxy-command.sh\" -Destination \"$env:UserProfile\\.ssh\\\""
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "Remove-Item -Force -Recurse -Path \"$env:UserProfile\\.ssh\\aws-ssm-ec2-proxy-command.sh\""
+        ]
+    },
+    "checkver": {
+        "github": "https://github.com/qoomon/aws-ssm-ec2-proxy-command"
+    },
+    "autoupdate": {
+        "url": "https://github.com/qoomon/aws-ssm-ec2-proxy-command/archive/v$version.zip#dl.zip",
+        "hash": {
+            "url": "$baseurl/RELEASES"
+        }
+    }
+}
