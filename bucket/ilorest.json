@@ -13,7 +13,7 @@
     "extract_dir": "PFiles\\Hewlett Packard Enterprise\\RESTful Interface Tool",
     "bin": "ilorest.exe",
     "checkver": {
-        "url": "https://support.hpe.com/hpsc/swd/public/detail?swItemId=MTX_d1c19551ffbb4b1b8f94587e22",
-        "regex": "<b>Version:([\\d.]+)</b>"
+        "url": "https://support.hpe.com/hpesc/public/api/software/MTX_cb540ef4c4ae49e0addbd1d73d/history",
+        "jsonpath": "$.swHistory[0].versionId"
     }
 }
