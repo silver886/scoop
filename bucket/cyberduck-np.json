@@ -1,7 +1,7 @@
 {
     "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
     "version": "7.9.1.34974",
-    "description": "Cyberduck is a libre server and cloud storage browser for Mac and Windows with support for FTP, SFTP, WebDAV, Amazon S3, OpenStack Swift, Backblaze B2, Microsoft Azure & OneDrive, Google Drive and Dropbox.",
+    "description": "This is a libre server and cloud storage browser for Mac and Windows with support for FTP, SFTP, WebDAV, Amazon S3, OpenStack Swift, Backblaze B2, Microsoft Azure & OneDrive, Google Drive and Dropbox.",
     "homepage": "https://cyberduck.io/",
     "license": {
         "identifier": "GPL-3.0-only",
@@ -15,7 +15,7 @@
     },
     "installer": {
         "script": [
-            "if (-not (is_admin)) { error 'This package requires admin privileges to uninstall'; break }",
+            "if (-not (is_admin)) { error 'This package requires admin privileges to install'; break }",
             "Expand-DarkArchive -Path \"$dir\\dl.exe\" -DestinationPath \"$dir\\_tmp\" -Removal",
             "@('Bonjour.msi') | ForEach-Object {",
             "    Remove-Item \"$dir\\_tmp\\AttachedContainer\\$_\"",
