@@ -19,6 +19,7 @@
     },
     "installer": {
         "script": [
+            "$ErrorActionPreference = 'silentlycontinue'",
             "$time = (Get-Date)",
             "$guid = '{AFE6A462-C574-4B8A-AF43-4CC60DF4563B}'",
             "$extract = (Start-Process -FilePath \"$dir\\dl.exe\" -ArgumentList '-Extract' -PassThru)",
@@ -27,11 +28,13 @@
             "$7zFile = (Get-ChildItem -Path \"$env:TEMP\\GUM*.tmp\" -Depth 1 -Filter \"brave_installer_*_$($version -replace '\\.', '_').exe.$guid\" |",
             "    Sort-Object $_.LastAccessTime -Descending |",
             "    Select-Object -First 1).FullName",
+            "$7zFileInfo1 = $null",
             "Do {",
-            "    $7zFileSize = (Get-Item \"$7zFile\").Length",
-            "    Start-Sleep -Milliseconds 250",
-            "} While (-not ($7zFileSize -eq (Get-Item \"$7zFile\").Length))",
+            "    $7zFileInfo2 = $7zFileInfo1",
+            "    $7zFileInfo1 = (Get-Item \"$7zFile\")",
+            "} While ($7zFileInfo1.Length -ne $7zFileInfo2.Length -or $7zFileInfo1.LastAccessTime.Ticks -ne $7zFileInfo2.LastAccessTime.Ticks -or $7zFileInfo1.LastWriteTime.Ticks -ne $7zFileInfo2.LastWriteTime.Ticks)",
             "Stop-Process -Id $extract.Id",
+            "Start-Sleep -Seconds 1",
             "Expand-7zipArchive -Path \"$7zFile\" -DestinationPath \"$dir\"",
             "Expand-7zipArchive -Path \"$dir\\chrome.7z\" -ExtractDir 'Chrome-bin' -Removal",
             "Remove-Item -Force -Path \"$dir\\dl.exe\""
