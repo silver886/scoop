@@ -1,0 +1,44 @@
+{
+    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
+    "version": "5.2.44882.0827",
+    "description": "This plugin lets you to start Zoom instant meetings and invite contacts directly from Skype.",
+    "homepage": "https://zoom.us/",
+    "license": "Proprietary",
+    "url": "https://cdn.zoom.us/prod/5.2.44882.0827/ZoomLyncPluginSetup.msi#/dl.msi_",
+    "hash": "b219e02d68aa38ab5cc115efea27b98bf0c694547b061b2199b5c41966371a6d",
+    "installer": {
+        "script": [
+            "if (-not (is_admin)) { error 'This package requires admin privileges to install'; break }",
+            "Invoke-ExternalCommand msiexec -ArgumentList @(",
+            "    '/i',",
+            "    \"$dir\\dl.msi_\",",
+            "    '/qn',",
+            "    '/norestart',",
+            "    \"TARGETDIR=\"\"$dir\"\"\",",
+            "    'ARPSYSTEMCOMPONENT=0',",
+            "    'MSIFASTINSTALL=7'",
+            ") -RunAs > $null"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "if (-not (is_admin)) { error 'This package requires admin privileges to uninstall'; break }",
+            "Invoke-ExternalCommand msiexec -ArgumentList @(",
+            "    '/x',",
+            "    \"$dir\\dl.msi_\",",
+            "    '/qn',",
+            "    '/norestart',",
+            "    \"TARGETDIR=\"\"$dir\"\"\",",
+            "    'ARPSYSTEMCOMPONENT=0',",
+            "    'MSIFASTINSTALL=7'",
+            ") -RunAs > $null"
+        ]
+    },
+    "checkver": {
+        "url": "https://zoom.us/download",
+        "regex": "ZoomLyncPluginSetup\\.msi(?s:.)*?Version ([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://cdn.zoom.us/prod/$version/ZoomLyncPluginSetup.msi#/dl.msi_"
+    }
+}
