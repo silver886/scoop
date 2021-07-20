@@ -1,12 +1,12 @@
 {
     "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
-    "version": "1.24.1",
+    "version": "1.26.0",
     "description": "This is an open-source framework for building serverless applications. It provides shorthand syntax to express functions, APIs, databases, and event source mappings. With just a few lines of configuration, you can define the application you want and model it.",
     "homepage": "https://docs.aws.amazon.com/serverless-application-model/index.html",
     "license": "Apache-2.0",
-    "url": "https://github.com/aws/aws-sam-cli/releases/download/v1.24.1/AWS_SAM_CLI_64_PY3.msi",
+    "url": "https://github.com/aws/aws-sam-cli/releases/download/v1.26.0/AWS_SAM_CLI_64_PY3.msi",
     "extract_dir": "Amazon\\AWSSAMCLI",
-    "hash": "71708de087ff96070f1ae49df6a1a3c3359e38df734df8c3bf270dd58e036fed",
+    "hash": "0c1b2f325be71a3dcbc92c7d4c7ba8fce40252805c8dc11c0e9a4f236e395a48",
     "bin": "bin\\sam.cmd",
     "checkver": {
         "github": "https://github.com/aws/aws-sam-cli"
