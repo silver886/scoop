@@ -14,9 +14,6 @@
         "github": "https://github.com/pecigonzalo/docker-machine-vmwareworkstation"
     },
     "autoupdate": {
-        "url": "https://github.com/pecigonzalo/docker-machine-vmwareworkstation/releases/download/v$version/docker-machine-driver-vmwareworkstation.exe",
-        "hash": {
-            "url": "$baseurl/RELEASES"
-        }
+        "url": "https://github.com/pecigonzalo/docker-machine-vmwareworkstation/releases/download/v$version/docker-machine-driver-vmwareworkstation.exe"
     }
 }
