@@ -23,6 +23,7 @@
     "hash": "c879f72e000354160e09cdcf20a24108db43766b66dbac08e67ad13e8b4a2c6b",
     "installer": {
         "script": [
+            "New-Item -Type Directory -Path \"$env:UserProfile\\.ssh\\\"",
             "Copy-Item -Path \"$dir\\aws-ssm-ec2-proxy-command-$version\\ec2-instance-connect\\aws-ssm-ec2-proxy-command.sh\" -Destination \"$env:UserProfile\\.ssh\\\""
         ]
     },
@@ -35,9 +36,6 @@
         "github": "https://github.com/qoomon/aws-ssm-ec2-proxy-command"
     },
     "autoupdate": {
-        "url": "https://github.com/qoomon/aws-ssm-ec2-proxy-command/archive/v$version.zip#dl.zip",
-        "hash": {
-            "url": "$baseurl/RELEASES"
-        }
+        "url": "https://github.com/qoomon/aws-ssm-ec2-proxy-command/archive/v$version.zip#dl.zip"
     }
 }
