@@ -1,0 +1,57 @@
+{
+    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
+    "version": "1.0.0",
+    "description": "Customize PowerShell.",
+    "depends": [
+        "main/oh-my-posh3",
+        "extras/posh-docker",
+        "extras/posh-git",
+        "main/noti",
+        "main/saml2aws"
+    ],
+    "url": [
+        "https://raw.githubusercontent.com/silver886/scoop/master/scripts/powershell-customization/Hotkey.ps1",
+        "https://raw.githubusercontent.com/silver886/scoop/master/scripts/powershell-customization/Module.ps1",
+        "https://raw.githubusercontent.com/silver886/scoop/master/scripts/powershell-customization/Clear-Screen.ps1",
+        "https://raw.githubusercontent.com/silver886/scoop/master/scripts/powershell-customization/Convert-EOL.ps1",
+        "https://raw.githubusercontent.com/silver886/scoop/master/scripts/powershell-customization/Import-Url.ps1",
+        "https://raw.githubusercontent.com/silver886/scoop/master/scripts/powershell-customization/Import-Ini.ps1",
+        "https://raw.githubusercontent.com/silver886/scoop/master/scripts/powershell-customization/Connect-DockerMachine.ps1",
+        "https://raw.githubusercontent.com/silver886/scoop/master/scripts/powershell-customization/New-Docker.ps1",
+        "https://raw.githubusercontent.com/silver886/scoop/master/scripts/powershell-customization/Connect-AWS.ps1",
+        "https://raw.githubusercontent.com/silver886/scoop/master/scripts/powershell-customization/Get-AWSExpiration.ps1",
+        "https://raw.githubusercontent.com/silver886/scoop/master/scripts/powershell-customization/Watch-AWS.ps1"
+    ],
+    "hash": [
+        "020593ac5a398be39d7256f8c50e11eda5c71b966c1d712f8902486c90bee277",
+        "03eec8f5e2e96966c4c3d9bc59ebe17eadeb6fe63a777f459fe39da443d12bf2",
+        "466d1adc0ac25536e655b8d015a3869a57b3ed7cf7cdeac57be83843f256b81a",
+        "f92cbb4c0a91a92b1ac2928d84c5b3e9059670c680d3e9763a572d5deeef6bbc",
+        "c51715939d3247fda2dabe0a9fa36d64ba136f64c4ab6effce208fee55c4e30d",
+        "032d23c32a99e188d38bb2d841489a8af437cc0404d6859730707442d77bcf50",
+        "f47a7f136172d1a93e1d5772d16a37fbb58b29b9070f5d2d2e24c1d2345d7d8a",
+        "fb2de7e81325b822907ec9ecde4a3b959915b10e8cf9e7a1280a735518416f84",
+        "7237914181f14964e2c1c32c26c459c2d0ced9e5c216bec2796e9fc015ae77dd",
+        "81bb8da7d966b0609cd9166c7c19f5c4b99cc73e1e89d2cf37deb01a671e6a8e",
+        "2d3fb0ed6a1ec31c88fbe2abb504d823371b66e3a70cfa39adf22f8790c3f377"
+    ],
+    "license": {
+        "identifier": "MIT",
+        "url": "https://github.com/silver886/scoop/blob/master/LICENSE"
+    },
+    "notes": [
+        "You can add the following commands to \"$env:UserProfile\\Documents\\PowerShell\\Profile.ps1\"",
+        "\tSet-Variable -Name MaximumHistoryCount -Value 32767",
+        "\t. '$dir\\Hotkey.ps1'",
+        "\t. '$dir\\Module.ps1'",
+        "\t. '$dir\\Clear-Screen.ps1'",
+        "\t. '$dir\\Convert-EOL.ps1'",
+        "\t. '$dir\\Import-Url.ps1'",
+        "\t. '$dir\\Import-Ini.ps1'",
+        "\t. '$dir\\Connect-DockerMachine.ps1'",
+        "\t. '$dir\\New-Docker.ps1'",
+        "\t. '$dir\\Connect-AWS.ps1'",
+        "\t. '$dir\\Get-AWSExpiration.ps1'",
+        "\t. '$dir\\Watch-AWS.ps1'"
+    ]
+}
