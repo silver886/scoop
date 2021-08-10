@@ -1,98 +1,66 @@
 [CmdletBinding()]
 param (
     [Parameter(Mandatory)]
-    [ValidateSet('create', 'destroy', 'install', 'uninstall', 'reinstall', 'start', 'stop', 'stopwait', 'restart', 'restart!', 'status', 'test', 'testwait', 'version', 'help')]
+    [ValidateSet('create', 'destroy')]
     [string]$Action,
 
     [Parameter(Mandatory)]
-    [string]$Name
+    [string]$Name,
+
+    [switch]$Force
 )
 
-begin {
-    $ServiceDirectory = "$dir\services\$Name"
+$Services = "$dir\services"
+$WinswExe = "$dir\winsw.exe"
+$TemplateXml = "$dir\winsw-template.xml"
+$CurrentServiceDirectory = "$Services\$Name"
+$CurrentServiceWinswExe = "$CurrentServiceDirectory\winsw.exe"
+$CurrentServiceWinswXml = "$CurrentServiceDirectory\winsw.xml"
+$CurrentServiceShimExe = "$Services\winsw-service-$Name.exe"
+$CurrentServiceShimConfig = "$Services\winsw-service-$Name.shim"
+$ShimExe = "$scoopdir\apps\scoop\current\supporting\shimexe\bin\shim.exe"
 
-    function CheckService {
-        if (-not (Test-Path -Path $ServiceDirectory -PathType Container)) {
-            Write-Error -Message "Service '$Name' does not exist." -ErrorAction Stop
+switch ($Action) {
+    'create' {
+        if (-not $Force -and ((Test-Path -Path $CurrentServiceDirectory -PathType Container) -or (Test-Path -Path $CurrentServiceShimExe -PathType Leaf) -or (Test-Path -Path $CurrentServiceShimConfig -PathType Leaf))) {
+            Write-Error -Message "Service '$Name' already exists." -ErrorAction Stop
         }
-    }
-
-    if ($Action -eq 'create') {
         if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
             Write-Error -Message 'This action must be executed as Administrator.' -ErrorAction Stop
         }
-        if (Test-Path -Path $ServiceDirectory -PathType Container) {
-            Write-Error -Message "Service '$Name' already exists." -ErrorAction Stop
-        }
     }
-    else {
-        CheckService
-    }
-}
-
-process {
-    switch ($Action) {
-        'create' {
-            New-Item -Path $ServiceDirectory -ItemType Directory > $null
-            New-Item -Path "$ServiceDirectory\winsw.exe" -ItemType SymbolicLink -Value "$dir\winsw.exe" > $null
-            Copy-Item -Path "$dir\winsw-template.xml" -Destination "$ServiceDirectory\winsw.xml" > $null
-
-        }
-        'destroy' {
-            . "$ServiceDirectory\winsw.exe" stopwait
-            . "$ServiceDirectory\winsw.exe" uninstall
-            Remove-Item -Force -Recurse -Path $ServiceDirectory
-        }
-        'install' {
-            . "$ServiceDirectory\winsw.exe" install
-        }
-        'uninstall' {
-            . "$ServiceDirectory\winsw.exe" uninstall
-        }
-        'reinstall' {
-            . "$ServiceDirectory\winsw.exe" uninstall
-            . "$ServiceDirectory\winsw.exe" install
-        }
-        'start' {
-            . "$ServiceDirectory\winsw.exe" start
-        }
-        'stop' {
-            . "$ServiceDirectory\winsw.exe" stop
-        }
-        'stopwait' {
-            . "$ServiceDirectory\winsw.exe" stopwait
-        }
-        'restart' {
-            . "$ServiceDirectory\winsw.exe" restart
-        }
-        'restart!' {
-            . "$ServiceDirectory\winsw.exe" restart!
-        }
-        'status' {
-            . "$ServiceDirectory\winsw.exe" status
-        }
-        'test' {
-            . "$ServiceDirectory\winsw.exe" test
-        }
-        'testwait' {
-            . "$ServiceDirectory\winsw.exe" testwait
-        }
-        'version' {
-            . "$ServiceDirectory\winsw.exe" version
-        }
-        'help' {
-            . "$ServiceDirectory\winsw.exe" help
+    'destroy' {
+        if (-not ($Force -or (Test-Path -Path $CurrentServiceDirectory -PathType Container))) {
+            Write-Error -Message "Service '$Name' does not exist." -ErrorAction Stop
         }
     }
 }
 
-end {
-    switch ($Action) {
-        'create' {
-            Write-Output "Service '$Name' created"
-        }
-        'destroy' {
-            Write-Output "Service '$Name' destroyed"
-        }
+switch ($Action) {
+    'create' {
+        New-Item -Force -Path $CurrentServiceDirectory -ItemType Directory -ErrorAction Stop > $null
+        New-Item -Force -Path $CurrentServiceWinswExe -ItemType SymbolicLink -Value $WinswExe -ErrorAction Stop > $null
+        Copy-Item -Force -Path $TemplateXml -Destination $CurrentServiceWinswXml -ErrorAction Stop > $null
+        Copy-Item -Force -Path $ShimExe -Destination $CurrentServiceShimExe -ErrorAction Stop > $null
+        Set-Content -Force -Path $CurrentServiceShimConfig -Value "path = $CurrentServiceWinswExe" -Encoding Ascii -ErrorAction Stop > $null
+    }
+    'destroy' {
+        Write-Output "Service '$Name' stopping"
+        & $CurrentServiceWinswExe stopwait
+        Write-Output "Service '$Name' stopped"
+        Write-Output "Service '$Name' uninstalling"
+        & $CurrentServiceWinswExe uninstall
+        Write-Output "Service '$Name' uninstalled"
+        Remove-Item -Force -Recurse -Path $CurrentServiceDirectory, $CurrentServiceShimExe, $CurrentServiceShimConfig -ErrorAction SilentlyContinue > $null
+    }
+}
+
+switch ($Action) {
+    'create' {
+        Write-Output "Service '$Name' created"
+        Write-Output "Config file located at '$CurrentServiceWinswXml'"
+    }
+    'destroy' {
+        Write-Output "Service '$Name' destroyed"
     }
 }
