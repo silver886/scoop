@@ -12,8 +12,8 @@ param (
     [switch]$Force
 )
 
+$WinswExe = "$scoopdir\apps\winsw\$version\winsw.exe"
 $Services = "$dir\services"
-$WinswExe = "$dir\winsw.exe"
 $TemplateXml = "$dir\winsw-template.xml"
 $CurrentServiceDirectory = "$Services\$Name"
 $CurrentServiceWinswExe = "$CurrentServiceDirectory\winsw.exe"
