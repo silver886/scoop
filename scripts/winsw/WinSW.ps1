@@ -1,3 +1,5 @@
+#Requires -RunAsAdministrator
+
 [CmdletBinding()]
 param (
     [Parameter(Mandatory)]
@@ -24,9 +26,6 @@ switch ($Action) {
     'create' {
         if (-not $Force -and ((Test-Path -Path $CurrentServiceDirectory -PathType Container) -or (Test-Path -Path $CurrentServiceShimExe -PathType Leaf) -or (Test-Path -Path $CurrentServiceShimConfig -PathType Leaf))) {
             Write-Error -Message "Service '$Name' already exists." -ErrorAction Stop
-        }
-        if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-            Write-Error -Message 'This action must be executed as Administrator.' -ErrorAction Stop
         }
     }
     'destroy' {
