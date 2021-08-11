@@ -1,0 +1,19 @@
+{
+    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
+    "version": "2.11.0",
+    "description": "This can run any executable as a Windows service, in a permissive license.",
+    "homepage": "https://github.com/winsw/winsw",
+    "license": {
+        "identifier": "MIT",
+        "url": "https://github.com/winsw/winsw/blob/master/LICENSE.txt"
+    },
+    "url": "https://github.com/winsw/winsw/releases/download/v2.11.0/WinSW-x64.exe#/winsw.exe",
+    "hash": "69833b8bd0b76cbf051a795ae89f9071b24863b7f141f87ccb675bdb08e8fb8b",
+    "bin": "winsw.exe",
+    "checkver": {
+        "github": "https://github.com/winsw/winsw"
+    },
+    "autoupdate": {
+        "url": "https://github.com/winsw/winsw/releases/download/v$version/WinSW-x64.exe#/winsw.exe"
+    }
+}
