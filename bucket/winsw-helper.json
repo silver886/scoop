@@ -1,7 +1,7 @@
 {
     "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
     "version": "2.11.0",
-    "description": "This can run any executable as a Windows service, in a permissive license.",
+    "description": "This helper implement script to create and destroy WinSW services.",
     "depends": "silver886/winsw",
     "url": [
         "https://github.com/winsw/winsw/releases/download/v2.11.0/sample-allOptions.xml#/winsw-template.xml",
