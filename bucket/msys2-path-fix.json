@@ -1,0 +1,21 @@
+{
+    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
+    "version": "1.0.0",
+    "description": "Fix MSYS2 path. This set most used paths of MSYS2 to PATH.",
+    "depends": "main/msys2",
+    "url": "https://example.com",
+    "installer": {
+        "script": [
+            "add_first_in_path $scoopdir\\apps\\msys2\\current\\usr\\bin $global",
+            "add_first_in_path $scoopdir\\apps\\msys2\\current\\mingw64\\bin $global",
+            "add_first_in_path $scoopdir\\apps\\msys2\\current\\mingw32\\bin $global"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "remove_from_path $scoopdir\\apps\\msys2\\current\\usr\\bin $global",
+            "remove_from_path $scoopdir\\apps\\msys2\\current\\mingw64\\bin $global",
+            "remove_from_path $scoopdir\\apps\\msys2\\current\\mingw32\\bin $global"
+        ]
+    }
+}
