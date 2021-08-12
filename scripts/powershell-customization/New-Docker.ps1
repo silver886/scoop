@@ -2,9 +2,13 @@ function New-Docker {
 
     [CmdletBinding()]
     param (
+        [switch]$DryRun,
+
         [string]$Image = 'alpine',
 
         [string[]]$Command,
+
+        [string]$Entrypoint,
 
         [string[]]$Env,
 
@@ -41,6 +45,9 @@ function New-Docker {
     }
     if (-not $Name -eq '') {
         $dockerArgs += @('--name', $Name)
+    }
+    if (-not $Entrypoint -eq '') {
+        $dockerArgs += @('--entrypoint', $Entrypoint)
     }
     if ($Remove) {
         $dockerArgs += @('--rm')
@@ -87,5 +94,10 @@ function New-Docker {
         $Command
     )
 
-    docker run @dockerArgs
+    if ($DryRun) {
+        Write-Output $(@('docker', 'run' ) + $dockerArgs -join ' ')
+    }
+    else {
+        docker run @dockerArgs
+    }
 }
