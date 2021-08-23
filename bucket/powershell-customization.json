@@ -1,6 +1,6 @@
 {
     "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "description": "Customize PowerShell.",
     "depends": [
         "main/oh-my-posh3",
@@ -10,17 +10,17 @@
         "main/saml2aws"
     ],
     "url": [
-        "https://raw.githubusercontent.com/silver886/scoop/powershell-customization/v1.1.0/scripts/powershell-customization/Hotkey.ps1",
-        "https://raw.githubusercontent.com/silver886/scoop/powershell-customization/v1.1.0/scripts/powershell-customization/Module.ps1",
-        "https://raw.githubusercontent.com/silver886/scoop/powershell-customization/v1.1.0/scripts/powershell-customization/Clear-Screen.ps1",
-        "https://raw.githubusercontent.com/silver886/scoop/powershell-customization/v1.1.0/scripts/powershell-customization/Convert-EOL.ps1",
-        "https://raw.githubusercontent.com/silver886/scoop/powershell-customization/v1.1.0/scripts/powershell-customization/Import-Url.ps1",
-        "https://raw.githubusercontent.com/silver886/scoop/powershell-customization/v1.1.0/scripts/powershell-customization/Import-Ini.ps1",
-        "https://raw.githubusercontent.com/silver886/scoop/powershell-customization/v1.1.0/scripts/powershell-customization/Connect-DockerMachine.ps1",
-        "https://raw.githubusercontent.com/silver886/scoop/powershell-customization/v1.1.0/scripts/powershell-customization/New-Docker.ps1",
-        "https://raw.githubusercontent.com/silver886/scoop/powershell-customization/v1.1.0/scripts/powershell-customization/Connect-AWS.ps1",
-        "https://raw.githubusercontent.com/silver886/scoop/powershell-customization/v1.1.0/scripts/powershell-customization/Get-AWSExpiration.ps1",
-        "https://raw.githubusercontent.com/silver886/scoop/powershell-customization/v1.1.0/scripts/powershell-customization/Watch-AWS.ps1"
+        "https://raw.githubusercontent.com/silver886/scoop/powershell-customization/v1.2.0/scripts/powershell-customization/Hotkey.ps1",
+        "https://raw.githubusercontent.com/silver886/scoop/powershell-customization/v1.2.0/scripts/powershell-customization/Module.ps1",
+        "https://raw.githubusercontent.com/silver886/scoop/powershell-customization/v1.2.0/scripts/powershell-customization/Clear-Screen.ps1",
+        "https://raw.githubusercontent.com/silver886/scoop/powershell-customization/v1.2.0/scripts/powershell-customization/Convert-EOL.ps1",
+        "https://raw.githubusercontent.com/silver886/scoop/powershell-customization/v1.2.0/scripts/powershell-customization/Import-Url.ps1",
+        "https://raw.githubusercontent.com/silver886/scoop/powershell-customization/v1.2.0/scripts/powershell-customization/Import-Ini.ps1",
+        "https://raw.githubusercontent.com/silver886/scoop/powershell-customization/v1.2.0/scripts/powershell-customization/Connect-DockerMachine.ps1",
+        "https://raw.githubusercontent.com/silver886/scoop/powershell-customization/v1.2.0/scripts/powershell-customization/New-Docker.ps1",
+        "https://raw.githubusercontent.com/silver886/scoop/powershell-customization/v1.2.0/scripts/powershell-customization/Connect-AWS.ps1",
+        "https://raw.githubusercontent.com/silver886/scoop/powershell-customization/v1.2.0/scripts/powershell-customization/Get-AWSExpiration.ps1",
+        "https://raw.githubusercontent.com/silver886/scoop/powershell-customization/v1.2.0/scripts/powershell-customization/Watch-AWS.ps1"
     ],
     "hash": [
         "020593ac5a398be39d7256f8c50e11eda5c71b966c1d712f8902486c90bee277",
@@ -33,7 +33,7 @@
         "9bfe4b4425cac89935f863d3a33fece1a7cd37ab48f4b0f5db2aefd6ce551220",
         "7237914181f14964e2c1c32c26c459c2d0ced9e5c216bec2796e9fc015ae77dd",
         "81bb8da7d966b0609cd9166c7c19f5c4b99cc73e1e89d2cf37deb01a671e6a8e",
-        "2d3fb0ed6a1ec31c88fbe2abb504d823371b66e3a70cfa39adf22f8790c3f377"
+        "35f4391ef049c41b740ad5b6018f388417308cbe9c1e26951077b27cb53a3996"
     ],
     "license": {
         "identifier": "MIT",
