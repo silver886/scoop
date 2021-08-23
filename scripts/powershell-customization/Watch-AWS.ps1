@@ -6,7 +6,9 @@ function Watch-AWS {
         [string]$AwsProfile,
 
         [Parameter(Mandatory)]
-        [double]$Seconds
+        [double]$Seconds,
+
+        [string]$AwsProfileDescription
     )
 
     $already = $true
@@ -18,5 +20,6 @@ function Watch-AWS {
     }
     if ($already) { return }
 
+    if (-not $AwsProfileDescription) { $AwsProfileDescription = $AwsProfile }
     noti -t 'AWS Credential' -m "$AwsProfileDescription is expired"
 }
