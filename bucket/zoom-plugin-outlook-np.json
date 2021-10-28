@@ -1,11 +1,11 @@
 {
     "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
-    "version": "5.7.6.92",
+    "version": "5.8.3.136",
     "description": "This installs a button on the Microsoft Outlook tool bar to enable you to start or schedule a meeting with one-click.",
     "homepage": "https://zoom.us/",
     "license": "Proprietary",
-    "url": "https://cdn.zoom.us/prod/5.7.6.92/ZoomOutlookPluginSetup.msi#/dl.msi_",
-    "hash": "b90917191cf07845d4b036ecee8475a8be810e5d6c7c39b3263592392e3b1a8e",
+    "url": "https://cdn.zoom.us/prod/5.8.3.136/ZoomOutlookPluginSetup.msi#/dl.msi_",
+    "hash": "0e72b9c12fc00453111731bb1d75075f63cc03c74f18a1da4a552e9e27c8d964",
     "installer": {
         "script": [
             "if (-not (is_admin)) { error 'This package requires admin privileges to install'; break }",
