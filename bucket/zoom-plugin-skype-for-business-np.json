@@ -1,11 +1,11 @@
 {
     "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
-    "version": "5.2.44882.0827",
+    "version": "5.8.0.109",
     "description": "This plugin lets you to start Zoom instant meetings and invite contacts directly from Skype.",
     "homepage": "https://zoom.us/",
     "license": "Proprietary",
-    "url": "https://cdn.zoom.us/prod/5.2.44882.0827/ZoomLyncPluginSetup.msi#/dl.msi_",
-    "hash": "b219e02d68aa38ab5cc115efea27b98bf0c694547b061b2199b5c41966371a6d",
+    "url": "https://cdn.zoom.us/prod/5.8.0.109/ZoomLyncPluginSetup.msi#/dl.msi_",
+    "hash": "267a3e695841e830b27255c52e782912d7899dff1f840d03a401c2f97a117e17",
     "installer": {
         "script": [
             "if (-not (is_admin)) { error 'This package requires admin privileges to install'; break }",
