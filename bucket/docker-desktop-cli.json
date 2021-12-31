@@ -1,14 +1,14 @@
 {
     "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
-    "version": "3.6.0.67351",
+    "version": "4.3.2.72729",
     "description": "Accelerate how you build, share, and run modern applications.",
     "homepage": "https://docker.com",
     "license": {
         "identifier": "Apache-2.0",
         "url": "https://github.com/docker/cli/blob/master/LICENSE"
     },
-    "url": "https://desktop.docker.com/win/stable/amd64/67351/Docker%20Desktop%20Installer.exe#/dl.7z",
-    "hash": "0c9f8af8c11dc6d2b6112cf3a8def1a0ea377b54ff0950a7131f185b12313b82",
+    "url": "https://desktop.docker.com/win/main/amd64/72729/Docker%20Desktop%20Installer.exe#/dl.7z",
+    "hash": "50c0b59060bea449fa247ee545ea9eb63c1cf03ae45df6b8fd03fb5681511e37",
     "extract_dir": "resources/bin",
     "bin": [
         [
@@ -18,12 +18,12 @@
         "docker-compose.exe"
     ],
     "checkver": {
-        "url": "https://desktop.docker.com/win/stable/amd64/appcast.xml",
+        "url": "https://desktop.docker.com/win/main/amd64/appcast.xml",
         "xpath": "/rss/channel/item/title",
         "regex": "(?<version>[\\d.]+) \\((?<build>\\d+)\\)",
         "replace": "${version}.${build}"
     },
     "autoupdate": {
-        "url": "https://desktop.docker.com/win/stable/amd64/$buildVersion/Docker%20Desktop%20Installer.exe#/dl.7z"
+        "url": "https://desktop.docker.com/win/main/amd64/$buildVersion/Docker%20Desktop%20Installer.exe#/dl.7z"
     }
 }
