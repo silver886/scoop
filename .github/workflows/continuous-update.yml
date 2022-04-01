@@ -4,14 +4,13 @@ on:
   schedule:
     - cron: 0 0 * * *
 
-permissions:
-  contents: write
-  pull-requests: write
-
 jobs:
   continuous-update:
     name: Continuous update
     runs-on: windows-latest
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
       - name: Get current date
         id: date
