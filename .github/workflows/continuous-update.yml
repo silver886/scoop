@@ -18,7 +18,7 @@ jobs:
       - name: Install Scoop
         run: |
           Invoke-WebRequest -UseBasicParsing https://get.scoop.sh |
-          Invoke-Expression
+          Invoke-Expression -RunAsAdmin
       - name: Update manifests
         run: |
           Get-ChildItem -Path .\bucket\ -Exclude $(
