@@ -24,7 +24,7 @@ jobs:
             }
           ) |
           ForEach-Object {
-            Write-Host $_.BaseName
+            .\bin\checkver.ps1 $_.BaseName -u
           }
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
