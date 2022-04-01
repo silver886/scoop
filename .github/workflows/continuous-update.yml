@@ -21,6 +21,7 @@ jobs:
           & "$env:TMP\scoop-install.ps1" -RunAsAdmin
       - name: Update manifests
         run: |
+          $env:Path="~\scoop\shims;$env:Path"
           Get-ChildItem -Path .\bucket\ -Exclude $(
             Get-Content .\.scoopupdateignore |
             ForEach-Object {
