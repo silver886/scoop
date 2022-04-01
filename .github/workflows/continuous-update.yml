@@ -15,8 +15,12 @@ jobs:
         run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Install Scoop
+        run: |
+          Invoke-WebRequest -UseBasicParsing https://get.scoop.sh |
+          Invoke-Expression
       - name: Update manifests
-        run: >
+        run: |
           Get-ChildItem -Path .\bucket\ -Exclude $(
             Get-Content .\.scoopupdateignore |
             ForEach-Object {
