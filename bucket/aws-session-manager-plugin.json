@@ -1,11 +1,11 @@
 {
     "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
-    "version": "1.2.279.0",
+    "version": "1.2.312.0",
     "description": "This plugin allows you to use the AWS Command Line Interface (AWS CLI) to start and end sessions that connect you to your managed instances.",
     "homepage": "https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html",
     "license": "Proprietary",
-    "url": "https://s3.amazonaws.com/session-manager-downloads/plugin/1.2.279.0/windows/SessionManagerPluginSetup.exe#/dl.exe",
-    "hash": "28c3531871a1bea8e8cc9fd3b491c6472e94c5d10e69b0d42769c05a434e23c8",
+    "url": "https://s3.amazonaws.com/session-manager-downloads/plugin/1.2.312.0/windows/SessionManagerPluginSetup.exe#/dl.exe",
+    "hash": "cac0bdf27dee30b142420ff33db183dab6ddd372438b0c646b042e5249b6f7cf",
     "pre_install": "Expand-DarkArchive -Path \"$dir\\dl.exe\" -DestinationPath \"$dir\\_tmp\" -Removal",
     "architecture": {
         "32bit": {
