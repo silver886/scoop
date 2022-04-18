@@ -10,7 +10,7 @@
     "installer": {
         "script": [
             "if (-not (is_admin)) { error 'This package requires admin privileges to install'; break }",
-            "$syncthingExe = \"$scoopdir\\apps\\syncthing\\$((ConvertFrom-Json (Get-Content -Raw \"$scoopdir\\apps\\syncthing\\current\\manifest.json\")).version)\\syncthing.exe\"",
+            "$syncthingExe = \"$(appdir syncthing)\\$((ConvertFrom-Json (Get-Content -Raw \"$(appdir syncthing)\\current\\manifest.json\")).version)\\syncthing.exe\"",
             "New-NetFirewallRule -Action Allow -Direction Inbound -Program \"$syncthingExe\" -DisplayName \"Syncthing Discovery ($app)\" -LocalPort 21027 -Protocol UDP > $null",
             "New-NetFirewallRule -Action Allow -Direction Inbound -Program \"$syncthingExe\" -DisplayName \"Syncthing Sync (TCP) ($app)\" -LocalPort 22000 -Protocol TCP > $null",
             "New-NetFirewallRule -Action Allow -Direction Inbound -Program \"$syncthingExe\" -DisplayName \"Syncthing Sync (QUIC) ($app)\" -LocalPort 22000 -Protocol UDP > $null"

@@ -8,7 +8,7 @@
     "installer": {
         "script": [
             "if (-not (is_admin)) { error 'This package requires admin privileges to install'; break }",
-            "$sublime = \"$scoopdir\\apps\\sublime-text\\current\\sublime_text.exe\"",
+            "$sublime = \"$(appdir sublime-text)\\current\\sublime_text.exe\"",
             "$registryPath = 'Registry::HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\Notepad.exe'",
             "$sublimeBat = \"$dir\\sublime-text-notepad.bat\"",
             "$content = (Get-Content $sublimeBat).Replace('$sublime', $sublime)",
@@ -26,7 +26,7 @@
     "uninstaller": {
         "script": [
             "if (-not (is_admin)) { error 'This package requires admin privileges to uninstall'; break }",
-            "$sublime = \"$scoopdir\\apps\\sublime-text\\current\\sublime_text.exe\"",
+            "$sublime = \"$(appdir sublime-text)\\current\\sublime_text.exe\"",
             "$registryPath = 'Registry::HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\Notepad.exe'",
             "Remove-Item -Force -Recurse -Path \"$registryPath\"",
             "$registryPath = 'Registry::HKCU\\Software\\Classes\\*\\shell\\Open with &Sublime\\command'",

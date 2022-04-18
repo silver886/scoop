@@ -6,16 +6,16 @@
     "url": "https://example.com",
     "installer": {
         "script": [
-            "add_first_in_path $scoopdir\\apps\\msys2\\current\\usr\\bin $global",
-            "add_first_in_path $scoopdir\\apps\\msys2\\current\\mingw64\\bin $global",
-            "add_first_in_path $scoopdir\\apps\\msys2\\current\\mingw32\\bin $global"
+            "add_first_in_path $(appdir msys2)\\current\\usr\\bin $global",
+            "add_first_in_path $(appdir msys2)\\current\\mingw64\\bin $global",
+            "add_first_in_path $(appdir msys2)\\current\\mingw32\\bin $global"
         ]
     },
     "uninstaller": {
         "script": [
-            "remove_from_path $scoopdir\\apps\\msys2\\current\\usr\\bin $global",
-            "remove_from_path $scoopdir\\apps\\msys2\\current\\mingw64\\bin $global",
-            "remove_from_path $scoopdir\\apps\\msys2\\current\\mingw32\\bin $global"
+            "remove_from_path $(appdir msys2)\\current\\usr\\bin $global",
+            "remove_from_path $(appdir msys2)\\current\\mingw64\\bin $global",
+            "remove_from_path $(appdir msys2)\\current\\mingw32\\bin $global"
         ]
     }
 }

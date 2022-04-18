@@ -7,7 +7,7 @@
     "installer": {
         "script": [
             "if (-not (is_admin)) { error 'This package requires admin privileges to install'; break }",
-            "$vscode = \"$scoopdir\\apps\\vscode\\current\\Code.exe\"",
+            "$vscode = \"$(appdir vscode)\\current\\Code.exe\"",
             "$registryPath = 'Registry::HKCU\\Software\\Classes\\*\\shell\\Open with &Code\\command'",
             "Set-Item -Force -Path \"$registryPath\" -Value \"`\"$vscode`\" -n `\"%1`\"\"",
             "$registryPath = 'Registry::HKCU\\Software\\Classes\\Directory\\shell\\Open with &Code\\command'",
@@ -19,7 +19,7 @@
     "uninstaller": {
         "script": [
             "if (-not (is_admin)) { error 'This package requires admin privileges to uninstall'; break }",
-            "$vscode = \"$scoopdir\\apps\\vscode\\current\\Code.exe\"",
+            "$vscode = \"$(appdir vscode)\\current\\Code.exe\"",
             "$registryPath = 'Registry::HKCU\\Software\\Classes\\*\\shell\\Open with &Code\\command'",
             "Set-Item -Force -Path \"$registryPath\" -Value \"`\"$vscode`\" '%1'\"",
             "$registryPath = 'Registry::HKCU\\Software\\Classes\\Directory\\shell\\Open with &Code\\command'",

@@ -7,7 +7,7 @@
     "installer": {
         "script": [
             "if (-not (is_admin)) { error 'This package requires admin privileges to install'; break }",
-            "$zoom = \"$scoopdir\\apps\\zoom\\current\\Zoom.exe\"",
+            "$zoom = \"$(appdir zoom)\\current\\Zoom.exe\"",
             "$registryPath = 'Registry::HKCR\\zoommtg'",
             "New-Item -Force -Path \"$registryPath\" > $null",
             "Set-Item -Force -Path \"$registryPath\" -Value 'URL:Zoom Launcher'",

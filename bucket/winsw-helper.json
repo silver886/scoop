@@ -13,7 +13,7 @@
     ],
     "installer": {
         "script": [
-            "if ((ConvertFrom-Json (Get-Content -Raw \"$scoopdir\\apps\\winsw\\current\\manifest.json\")).version -ne $version) {",
+            "if ((ConvertFrom-Json (Get-Content -Raw \"$(appdir winsw)\\current\\manifest.json\")).version -ne $version) {",
             "    error 'This package requires `winsw` with matching version'; break ",
             "}",
             "$winswScript = \"$dir\\WinSW.ps1\"",
