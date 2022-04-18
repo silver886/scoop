@@ -1,0 +1,39 @@
+{
+    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
+    "version": "2022.3.0",
+    "description": "The professional GUI for MongoDB.",
+    "homepage": "https://studio3t.com/",
+    "license": "Proprietary",
+    "architecture": {
+        "64bit": {
+            "url": "https://download.studio3t.com/studio-3t/windows/2022.3.0/studio-3t-x64.zip",
+            "hash": "d60815ca8567d06b9405934db7230289d4b98fea5aece810c41cec28735582f1",
+            "installer": {
+                "script": [
+                    "$ErrorActionPreference = 'silentlycontinue'",
+                    "& \"$dir\\studio-3t-x64.exe\" -q -dir \"$dir\\tmp\"",
+                    "While (-not (Get-Content \"$dir\\tmp\\.install4j\\installation.log\" | Where-Object { $_ -ilike '*finished at*' })) {}",
+                    "Move-Item \"$dir\\tmp\\*\" \"$dir\"",
+                    "Remove-Item \"$dir\\studio-3t-x64.exe\", \"$dir\\tmp\""
+                ]
+            }
+        }
+    },
+    "shortcuts": [
+        [
+            "Studio 3T.exe",
+            "Studio 3T"
+        ]
+    ],
+    "checkver": {
+        "url": "https://files.studio3t.com/changelog/changelog.txt",
+        "regex": "(?<version>\\d{4}\\.\\d+\\.\\d+) \\(\\d{2}-[A-Z][a-z]{2}-\\d{4}\\)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download.studio3t.com/studio-3t/windows/$version/studio-3t-x64.zip"
+            }
+        }
+    }
+}
