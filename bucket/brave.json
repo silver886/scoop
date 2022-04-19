@@ -9,55 +9,46 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/brave/brave-browser/releases/download/v1.37.116/BraveBrowserStandaloneSetup.exe#/dl.exe",
-            "hash": "5110dc4e5646c656bd242fc559d21dc2e0a81f1cc86321c09e240b06105b26f0"
+            "url": "https://github.com/brave/brave-browser/releases/download/v1.37.116/brave-v1.37.116-win32-x64.zip",
+            "hash": "6715819203cc103f9a8eef2ec21f746203e7a19a1e04287b92d9d0d6bdf9ac38"
         },
         "32bit": {
-            "url": "https://github.com/brave/brave-browser/releases/download/v1.37.116/BraveBrowserStandaloneSetup32.exe#/dl.exe",
-            "hash": "aa37ebcd036fdc98faacfcba508308cb6c4b26b474d3eb0dfa9c1ca8eee6684b"
+            "url": "https://github.com/brave/brave-browser/releases/download/v1.37.116/brave-v1.37.116-win32-ia32.zip",
+            "hash": "537aba02bdaee5fc48c83f9ef5c0520f0d94b1016ee21c58b3051c6778d065f7"
         }
     },
-    "installer": {
-        "script": [
-            "$ErrorActionPreference = 'silentlycontinue'",
-            "$time = (Get-Date)",
-            "$guid = '{AFE6A462-C574-4B8A-AF43-4CC60DF4563B}'",
-            "$extract = (Start-Process -FilePath \"$dir\\dl.exe\" -ArgumentList '-Extract' -PassThru)",
-            "While (-not (Get-ChildItem -Path \"$env:TEMP\\GUM*.tmp\" -Depth 1 -Filter \"brave_installer_*_$($version -replace '\\.', '_').exe.$guid\" |",
-            "    Where-Object { $_.LastAccessTime -gt $time})) {}",
-            "$7zFile = (Get-ChildItem -Path \"$env:TEMP\\GUM*.tmp\" -Depth 1 -Filter \"brave_installer_*_$($version -replace '\\.', '_').exe.$guid\" |",
-            "    Sort-Object $_.LastAccessTime -Descending |",
-            "    Select-Object -First 1).FullName",
-            "$7zFileInfo1 = $null",
-            "Do {",
-            "    $7zFileInfo2 = $7zFileInfo1",
-            "    $7zFileInfo1 = (Get-Item \"$7zFile\")",
-            "} While ($7zFileInfo1.Length -ne $7zFileInfo2.Length -or $7zFileInfo1.LastAccessTime.Ticks -ne $7zFileInfo2.LastAccessTime.Ticks -or $7zFileInfo1.LastWriteTime.Ticks -ne $7zFileInfo2.LastWriteTime.Ticks)",
-            "Stop-Process -Id $extract.Id",
-            "Start-Sleep -Seconds 1",
-            "Expand-7zipArchive -Path \"$7zFile\" -DestinationPath \"$dir\"",
-            "Expand-7zipArchive -Path \"$dir\\chrome.7z\" -ExtractDir 'Chrome-bin' -Removal",
-            "Remove-Item -Force -Path \"$dir\\dl.exe\""
+    "bin": [
+        [
+            "brave.exe",
+            "brave",
+            "--user-data-dir=\"$dir\\User Data\""
         ]
-    },
-    "bin": "brave.exe",
+    ],
     "shortcuts": [
         [
             "brave.exe",
-            "Brave"
+            "Brave",
+            "--user-data-dir=\"$dir\\User Data\""
         ]
+    ],
+    "post_install": [
+        "if (!(Test-Path \"$dir\\User Data\\*\") -and (Test-Path \"$env:LocalAppData\\BraveSoftware\\Brave-Browser\\User Data\")) {",
+        "    info '[Portable Mode]: Copying user data...'",
+        "    Copy-Item \"$env:LocalAppData\\BraveSoftware\\Brave-Browser\\User Data\\*\" \"$dir\\User Data\" -Recurse",
+        "}"
     ],
     "checkver": {
         "url": "https://brave.com/latest/",
         "regex": "<strong>V([\\d.]+)</strong>"
     },
+    "persist": "User Data",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/brave/brave-browser/releases/download/v$version/BraveBrowserStandaloneSetup.exe#/dl.exe"
+                "url": "https://github.com/brave/brave-browser/releases/download/v$version/brave-v$version-win32-x64.zip"
             },
             "32bit": {
-                "url": "https://github.com/brave/brave-browser/releases/download/v$version/BraveBrowserStandaloneSetup32.exe#/dl.exe"
+                "url": "https://github.com/brave/brave-browser/releases/download/v$version/brave-v$version-win32-ia32.zip"
             }
         }
     }
