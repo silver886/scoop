@@ -2,7 +2,7 @@
     "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
     "version": "2.11.0",
     "description": "This helper implement script to create and destroy WinSW services.",
-    "depends": "silver886/winsw",
+    "depends": "main/winsw",
     "url": [
         "https://github.com/winsw/winsw/releases/download/v2.11.0/sample-allOptions.xml#/winsw-template.xml",
         "https://raw.githubusercontent.com/silver886/scoop/winsw-helper/v2.11.0/scripts/winsw-helper/WinSW.ps1"
