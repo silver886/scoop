@@ -33,6 +33,9 @@
         "github": "https://github.com/winsw/winsw"
     },
     "autoupdate": {
-        "url": "https://github.com/winsw/winsw/releases/download/v$version/sample-allOptions.xml#/winsw-template.xml"
+        "url": [
+            "https://github.com/winsw/winsw/releases/download/v$version/sample-allOptions.xml#/winsw-template.xml",
+            "https://raw.githubusercontent.com/silver886/scoop/winsw-helper/v$version/scripts/winsw-helper/WinSW.ps1"
+        ]
     }
 }

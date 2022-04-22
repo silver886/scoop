@@ -1,6 +1,6 @@
 {
     "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
-    "version": "2022.3.0",
+    "version": "2022.4.0",
     "description": "The professional GUI for MongoDB.",
     "homepage": "https://studio3t.com/",
     "license": "Proprietary",
@@ -9,14 +9,14 @@
             "url": [
                 "https://aluigi.altervista.org/papers/quickbms.zip",
                 "https://aluigi.altervista.org/bms/install4j.bms",
-                "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.2+8/OpenJDK17U-jre_x64_windows_hotspot_17.0.2_8.zip",
-                "https://download.studio3t.com/studio-3t/windows/2022.3.0/studio-3t-x64.zip"
+                "https://download.studio3t.com/studio-3t/windows/2022.4.0/studio-3t-x64.zip",
+                "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.2+8/OpenJDK17U-jre_x64_windows_hotspot_17.0.2_8.zip"
             ],
             "hash": [
                 "f1836b4f470a636e5a3e9e8f703cbd0fdce8a7e158637c0b1c782ca678949dd7",
                 "9b92e3600c2b8589701c890e8db73706244dcb40139609ad0a16cb7da213c8a8",
-                "c3204a19aede95ed02ad0f427210855a951d845ab7f806fb56b774daf2572454",
-                "d60815ca8567d06b9405934db7230289d4b98fea5aece810c41cec28735582f1"
+                "7436665ae1e731112e082ad0560cded4bf54a05e58db89a502eacd0518ef192a",
+                "c3204a19aede95ed02ad0f427210855a951d845ab7f806fb56b774daf2572454"
             ],
             "installer": {
                 "script": [
@@ -43,7 +43,12 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://download.studio3t.com/studio-3t/windows/$version/studio-3t-x64.zip"
+                "url": [
+                    "https://aluigi.altervista.org/papers/quickbms.zip",
+                    "https://aluigi.altervista.org/bms/install4j.bms",
+                    "https://download.studio3t.com/studio-3t/windows/$version/studio-3t-x64.zip",
+                    "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.2+8/OpenJDK17U-jre_x64_windows_hotspot_17.0.2_8.zip"
+                ]
             }
         }
     }
