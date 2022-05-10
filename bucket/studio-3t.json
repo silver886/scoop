@@ -24,7 +24,7 @@
                     "while (Get-Process | Where-Object { $_.Path -like \"$dir\\*\" }){",
                     "    Get-Process | Where-Object { $_.Path -like \"$dir\\*\" }",
                     "}",
-                    "Move-Item -Path \"$dir\\*\" -Destination \"$dir\\tmp\" -Exclude \"$dir\\tmp\"",
+                    "Move-Item -Path \"$dir\\*\" -Destination \"$dir\\tmp\" -Exclude \"$dir\\tmp\" -ErrorAction SilentlyContinue",
                     "& \"$dir\\tmp\\quickbms.exe\" -Q \"$dir\\tmp\\install4j.bms\" \"$dir\\tmp\\studio-3t-x64.exe\" \"$dir\" > $null",
                     "New-Item -Type Directory -Path \"$dir\\jre\" > $null",
                     "Move-Item -Path \"$dir\\tmp\\jdk-17.0.2+8-jre\\*\" -Destination \"$dir\\jre\"",
