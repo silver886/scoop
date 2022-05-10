@@ -8,6 +8,8 @@
         "url": "https://github.com/qoomon/aws-ssm-ec2-proxy-command/blob/master/LICENSE"
     },
     "notes": [
+        "`aws-ssm-ec2-proxy-command` should be replaced to `aws-ssm-ec2-proxy-command-ec2-instance-connect` or `aws-ssm-ec2-proxy-command-ssm`",
+        "",
         "Example usage of this command.",
         "ssh <INSTANCE_USER>@<INSTANCE_ID>[--<INSTANCE_REGION>] `",
         "\t-i '~/.ssh/id_rsa' `",
@@ -23,13 +25,17 @@
     "hash": "c879f72e000354160e09cdcf20a24108db43766b66dbac08e67ad13e8b4a2c6b",
     "installer": {
         "script": [
-            "New-Item -Type Directory -Path \"$env:UserProfile\\.ssh\\\"",
-            "Copy-Item -Path \"$dir\\aws-ssm-ec2-proxy-command-$version\\ec2-instance-connect\\aws-ssm-ec2-proxy-command.sh\" -Destination \"$env:UserProfile\\.ssh\\\""
+            "Move-Item -Path \"$dir\\aws-ssm-ec2-proxy-command-$version\\*\" -Destination \"$dir\"",
+            "Remove-Item -Recurse -Force -Path \"$dir\\aws-ssm-ec2-proxy-command-$version\"",
+            "New-Item -Type Directory -Path \"$env:UserProfile\\.ssh\\\" -ErrorAction SilentlyContinue",
+            "Copy-Item -Path \"$dir\\ec2-instance-connect\\aws-ssm-ec2-proxy-command.sh\" -Destination \"$env:UserProfile\\.ssh\\aws-ssm-ec2-proxy-command-ec2-instance-connect.sh\"",
+            "Copy-Item -Path \"$dir\\aws-ssm-ec2-proxy-command.sh\" -Destination \"$env:UserProfile\\.ssh\\aws-ssm-ec2-proxy-command-ssm.sh\""
         ]
     },
     "uninstaller": {
         "script": [
-            "Remove-Item -Force -Recurse -Path \"$env:UserProfile\\.ssh\\aws-ssm-ec2-proxy-command.sh\""
+            "Remove-Item -Force -Recurse -Path \"$env:UserProfile\\.ssh\\aws-ssm-ec2-proxy-command-ec2-instance-connect.sh\"",
+            "Remove-Item -Force -Recurse -Path \"$env:UserProfile\\.ssh\\aws-ssm-ec2-proxy-command-ssm.sh\""
         ]
     },
     "checkver": {
