@@ -1,11 +1,11 @@
 {
     "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
-    "version": "5.7.0.1307",
+    "version": "5.7.1.1",
     "description": "This is a collection of 20+ desktop and mobile apps and services for photography, design, video, web, UX, and more.",
     "homepage": "https://www.adobe.com/creativecloud.html",
     "license": "Proprietary",
-    "url": "https://ccmdl.adobe.com/AdobeProducts/KCCC/CCD/5_7_0/win64/ACCCx5_7_0_1307.zip",
-    "hash": "8401df314cac34ccb151e6741e8566d1dbde2a50efe5a8d889a07dec5eed121c",
+    "url": "https://ccmdl.adobe.com/AdobeProducts/KCCC/CCD/5_7_1/win64/ACCCx5_7_1_1.zip",
+    "hash": "9e64f465ccd968439f88f570081c49ec180049031b934308823dd6f69a116f70",
     "installer": {
         "script": "Invoke-ExternalCommand \"$dir\\Set-up.exe\" -RunAs > $null"
     },
