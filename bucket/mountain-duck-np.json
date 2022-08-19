@@ -1,6 +1,6 @@
 {
     "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
-    "version": "4.12.1.19928",
+    "version": "4.12.2.20039",
     "description": "This lets you mount server and cloud storage as a disk in Finder on macOS and the File Explorer on Windows. Open remote files with any application and work like on a local volume.",
     "homepage": "https://mountainduck.io/",
     "license": {
@@ -9,8 +9,8 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://dist.mountainduck.io/Mountain%20Duck%20Installer-4.12.1.19928.exe#/dl.exe",
-            "hash": "6f79f7b6242e93882593ade2f5703dc7347fab797265d868795eea5314ab471e"
+            "url": "https://dist.mountainduck.io/Mountain%20Duck%20Installer-4.12.2.20039.exe#/dl.exe",
+            "hash": "6debe3db5fca6f68808449052cbdee75e9aa14c77470c82c8c6fe3211db8071b"
         }
     },
     "installer": {
