@@ -1,14 +1,14 @@
 {
     "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
-    "version": "4.11.1.84025",
+    "version": "4.12.0.85629",
     "description": "Accelerate how you build, share, and run modern applications.",
     "homepage": "https://docker.com",
     "license": {
         "identifier": "Apache-2.0",
         "url": "https://github.com/docker/cli/blob/master/LICENSE"
     },
-    "url": "https://desktop.docker.com/win/main/amd64/84025/Docker%20Desktop%20Installer.exe#/dl.7z",
-    "hash": "8af32948447ddab655455542f6a12c8d752642a2bd451e2a48f76398cfd872b0",
+    "url": "https://desktop.docker.com/win/main/amd64/85629/Docker%20Desktop%20Installer.exe#/dl.7z",
+    "hash": "996a4c5fff5b80b707ecfc0121d7ebe70d96c0bd568f058fd96f32cdec0c10cf",
     "extract_dir": "resources/bin",
     "bin": [
         [
