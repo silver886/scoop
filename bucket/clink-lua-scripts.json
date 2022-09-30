@@ -1,0 +1,19 @@
+{
+    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
+    "version": "1.0.0",
+    "description": "Install Clink scripts. This installs scripts under `~/.config/clink`.",
+    "depends": "main/clink",
+    "url": "https://example.com",
+    "installer": {
+        "script": [
+            "clink installscripts \"$env:UserProfile\\.config\\clink\""
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "if (Get-Command clink -ErrorAction SilentlyContinue) {",
+            "   clink uninstallscripts \"$env:UserProfile\\.config\\clink\"",
+            "}"
+        ]
+    }
+}
