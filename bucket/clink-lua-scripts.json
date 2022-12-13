@@ -3,7 +3,8 @@
     "version": "1.0.0",
     "description": "Install Clink scripts. This installs scripts under `~/.config/clink`.",
     "depends": "main/clink",
-    "url": "https://example.com",
+    "url": "https://example.com/index.html",
+    "hash": "ea8fac7c65fb589b0d53560f5251f74f9e9b243478dcb6b3ea79b5e36449c8d9",
     "installer": {
         "script": [
             "clink installscripts \"$env:UserProfile\\.config\\clink\""

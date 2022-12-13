@@ -3,7 +3,8 @@
     "version": "1.0.0",
     "description": "Fix Zoom registry. This enables the ability to open Zoom with URL.",
     "depends": "extras/zoom",
-    "url": "https://example.com",
+    "url": "https://example.com/index.html",
+    "hash": "ea8fac7c65fb589b0d53560f5251f74f9e9b243478dcb6b3ea79b5e36449c8d9",
     "installer": {
         "script": [
             "if (-not (is_admin)) { error 'This package requires admin privileges to install'; break }",
