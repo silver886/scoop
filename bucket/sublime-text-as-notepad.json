@@ -1,0 +1,35 @@
+{
+    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
+    "version": "1.1.0",
+    "description": "This will always open Sublime Text in new window and set Sublime Text as default editor and replace notepad.exe.",
+    "depends": "extras/sublime-text",
+    "url": "https://raw.githubusercontent.com/silver886/scoop/sublime-text-as-notepad/v1.0.3/scripts/sublime-text-as-notepad/wrapper.bat",
+    "hash": "3f0cdc2955d8a836d40eccb54f34a0717506abfee8deafc77a84ede50df01520",
+    "installer": {
+        "script": [
+            "if (-not (is_admin)) { error 'This package requires admin privileges to install'; break }",
+            "$sublime = \"$(appdir sublime-text)\\current\\sublime_text.exe\"",
+            "$registryPath = 'Registry::HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\Notepad.exe'",
+            "$sublimeBat = \"$dir\\wrapper.bat\"",
+            "$content = (Get-Content $sublimeBat).Replace('$sublime', $sublime)",
+            "Set-Content -Force -Path $sublimeBat -Value $content -Encoding Ascii",
+            "New-Item -Force -Path \"$registryPath\" > $null",
+            "New-ItemProperty -Force -Path \"$registryPath\" -Name 'Debugger' -PropertyType String -Value \"`\"$sublimeBat`\"\" > $null"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "if (-not (is_admin)) { error 'This package requires admin privileges to uninstall'; break }",
+            "$sublime = \"$(appdir sublime-text)\\current\\sublime_text.exe\"",
+            "$registryPath = 'Registry::HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\Notepad.exe'",
+            "Remove-Item -Force -Recurse -Path \"$registryPath\""
+        ]
+    },
+    "checkver": {
+        "url": "https://api.github.com/repos/silver886/scoop/tags",
+        "re": "sublime-text-as-notepad/v(?<version>[\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://raw.githubusercontent.com/silver886/scoop/sublime-text-as-notepad/v$version/scripts/sublime-text-as-notepad/wrapper.bat"
+    }
+}
