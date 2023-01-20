@@ -7,6 +7,7 @@ labels: request, help wanted
 
 <!-- Adjust prefilled title with correct name of application -->
 <!-- Please provide following information: -->
+
 - **URL to application**: <>
 - **Latest version**:
 - **Graphical interface**: Yes/No
