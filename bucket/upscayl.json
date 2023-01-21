@@ -1,28 +1,28 @@
 {
-    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
-    "version": "2.0.1",
-    "description": "Free and Open Source AI Image Upscaler for Linux, MacOS and Windows built with Linux-First philosophy.",
-    "homepage": "https://upscayl.github.io",
-    "license": "AGPL-3.0",
-    "url": "https://github.com/upscayl/upscayl/releases/download/v2.0.1/upscayl-2.0.1-win.exe",
-    "hash": "003f9f67f85b5c6f4d6cf879a1b5af092b69f3d110d4571d95e1294c19819906",
-    "installer": {
-        "script": [
-            "Expand-7zipArchive -Path \"$dir\\dl.exe\" -DestinationPath \"$dir\\_tmp\" -Removal",
-            "Expand-7zipArchive -Path \"$dir\\_tmp\\`$PLUGINSDIR\\app-64.7z\" -DestinationPath \"$dir\"",
-            "Remove-Item \"$dir\\_tmp\" -Force -Recurse"
-        ]
-    },
-    "shortcuts": [
-        [
-            "Upscayl.exe",
-            "Upscayl"
-        ]
-    ],
-    "checkver": {
-        "github": "https://github.com/upscayl/upscayl"
-    },
-    "autoupdate": {
-        "url": "https://github.com/upscayl/upscayl/releases/download/v$version/upscayl-$version-win.exe"
-    }
+   "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
+   "version": "2.0.1",
+   "description": "Free and Open Source AI Image Upscaler for Linux, MacOS and Windows built with Linux-First philosophy.",
+   "homepage": "https://upscayl.github.io",
+   "license": "AGPL-3.0",
+   "url": "https://github.com/upscayl/upscayl/releases/download/v2.0.1/upscayl-2.0.1-win.exe",
+   "hash": "003f9f67f85b5c6f4d6cf879a1b5af092b69f3d110d4571d95e1294c19819906",
+   "installer": {
+      "script": [
+         "Expand-7zipArchive -Path \"$dir\\dl.exe\" -DestinationPath \"$dir\\_tmp\" -Removal",
+         "Expand-7zipArchive -Path \"$dir\\_tmp\\`$PLUGINSDIR\\app-64.7z\" -DestinationPath \"$dir\"",
+         "Remove-Item \"$dir\\_tmp\" -Force -Recurse"
+      ]
+   },
+   "shortcuts": [
+      [
+         "Upscayl.exe",
+         "Upscayl"
+      ]
+   ],
+   "checkver": {
+      "github": "https://github.com/upscayl/upscayl"
+   },
+   "autoupdate": {
+      "url": "https://github.com/upscayl/upscayl/releases/download/v$version/upscayl-$version-win.exe"
+   }
 }

@@ -1,0 +1,34 @@
+lockfileVersion: 5.4
+
+specifiers:
+  prettier: ^2.8.1
+  prettier-plugin-multiline-arrays: ^1.1.2
+
+devDependencies:
+  prettier: 2.8.3
+  prettier-plugin-multiline-arrays: 1.1.3
+
+packages:
+
+  /@augment-vir/common/8.1.0:
+    resolution: {integrity: sha512-mVE9upO/BIHdRIH/HoJAHDaHk57AxtQ3BvmI0B2o2xMvripDxuPf7jhxL793uyJtprLF2X6yE0BhG/rgLeHLbw==}
+    dependencies:
+      type-fest: 3.5.3
+    dev: true
+
+  /prettier-plugin-multiline-arrays/1.1.3:
+    resolution: {integrity: sha512-8I4FWatPhZXAsPMKM5E6h92ZRLAniJDdl9Uyy5aBvz9jJxc27CYQJIKBXdRW1SHrgKjEeWchmsAkLVyORIEOqw==}
+    dependencies:
+      '@augment-vir/common': 8.1.0
+    dev: true
+
+  /prettier/2.8.3:
+    resolution: {integrity: sha512-tJ/oJ4amDihPoufT5sM0Z1SKEuKay8LfVAMlbbhnnkvt6BUserZylqo2PN+p9KeljLr0OHa2rXHU1T8reeoTrw==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
+    dev: true
+
+  /type-fest/3.5.3:
+    resolution: {integrity: sha512-V2+og4j/rWReWvaFrse3s9g2xvUv/K9Azm/xo6CjIuq7oeGqsoimC7+9/A3tfvNcbQf8RPSVj/HV81fB4DJrjA==}
+    engines: {node: '>=14.16'}
+    dev: true
