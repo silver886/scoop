@@ -1,11 +1,11 @@
 {
    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
-   "version": "2.11.0",
+   "version": "2.12.0",
    "description": "This helper implement script to create and destroy WinSW services.",
    "depends": "main/winsw",
    "url": [
-      "https://github.com/winsw/winsw/releases/download/v2.11.0/sample-allOptions.xml#/winsw-template.xml",
-      "https://raw.githubusercontent.com/silver886/scoop/winsw-helper/v2.11.0/scripts/winsw-helper/WinSW.ps1"
+      "https://github.com/winsw/winsw/releases/download/v2.12.0/sample-allOptions.xml#/winsw-template.xml",
+      "https://raw.githubusercontent.com/silver886/scoop/winsw-helper/v2.12.0/scripts/winsw-helper/WinSW.ps1"
    ],
    "hash": [
       "08b8c0692699d00ee9ae37b636b52a3b5655e5d486a20cebe60cd26c50d86e46",
