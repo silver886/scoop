@@ -1,7 +1,7 @@
 {
    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
    "version": "1.0.0",
-   "description": "Fix pnpm env. This set `PNPM_HOME` to `nodejs-lts`'s `bin`.",
+   "description": "Fix pnpm env. This set `PNPM_HOME`.",
    "depends": [
       "main/nodejs-lts",
       "main/pnpm"
