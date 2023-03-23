@@ -1,6 +1,6 @@
 {
    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
-   "version": "8.5.6.39394",
+   "version": "8.5.7.39535",
    "description": "This is a libre server and cloud storage browser for Mac and Windows with support for FTP, SFTP, WebDAV, Amazon S3, OpenStack Swift, Backblaze B2, Microsoft Azure & OneDrive, Google Drive and Dropbox.",
    "homepage": "https://cyberduck.io/",
    "license": {
@@ -9,8 +9,8 @@
    },
    "architecture": {
       "64bit": {
-         "url": "https://update.cyberduck.io/windows/Cyberduck-Installer-8.5.6.39394.exe#/dl.exe",
-         "hash": "bc1292dbc57bdff0cb3529c8739727b25c2ad44dee80c764634c4da8999fc367"
+         "url": "https://update.cyberduck.io/windows/Cyberduck-Installer-8.5.7.39535.exe#/dl.exe",
+         "hash": "e268855ba0a65baa294c8ffdedf1020ccd528f5a3086b9fc1445872c5eba56e8"
       }
    },
    "installer": {
