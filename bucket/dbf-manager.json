@@ -1,11 +1,11 @@
 {
    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
-   "version": "3.7.413",
+   "version": "3.9.402",
    "description": "This is an advanced DBF data management solution for all database users.",
    "homepage": "https://dbfmanager.com/",
    "license": "Proprietary",
    "url": "http://astersoft.com/files/dbfmanager.msi",
-   "hash": "0c17ce43e745d552151d4706adfa7450dbebf0ff0efe49589838cbc0aa90885c",
+   "hash": "4a4e21d3725b3b6ffb052ccbbe5bd48986eb3997a995ab1ad120ddc96961b6e5",
    "extract_dir": "ProgramFilesFolder\\DBF Manager",
    "shortcuts": [
       [
