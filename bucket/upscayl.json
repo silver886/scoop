@@ -4,7 +4,7 @@
    "description": "Free and Open Source AI Image Upscaler for Linux, MacOS and Windows built with Linux-First philosophy.",
    "homepage": "https://upscayl.github.io",
    "license": "AGPL-3.0",
-   "url": "https://github.com/upscayl/upscayl/releases/download/v2.5.1/upscayl-2.5.1-win.exe",
+   "url": "https://github.com/upscayl/upscayl/releases/download/v2.5.1/upscayl-2.5.1-win.exe#/dl.exe",
    "hash": "7ce5e79069091d92527e56ffdee9d249b3b11adfe41ef8837b126a2005a1d1dc",
    "installer": {
       "script": [
@@ -23,6 +23,6 @@
       "github": "https://github.com/upscayl/upscayl"
    },
    "autoupdate": {
-      "url": "https://github.com/upscayl/upscayl/releases/download/v$version/upscayl-$version-win.exe"
+      "url": "https://github.com/upscayl/upscayl/releases/download/v$version/upscayl-$version-win.exe#/dl.exe"
    }
 }
