@@ -27,9 +27,7 @@
          "}"
       ]
    },
-   "bin": [
-      "bin/docker.exe"
-   ],
+   "bin": "bin/docker.exe",
    "checkver": {
       "url": "https://desktop.docker.com/win/main/amd64/appcast.xml",
       "xpath": "/rss/channel/item/title",
