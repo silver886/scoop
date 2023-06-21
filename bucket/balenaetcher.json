@@ -1,17 +1,17 @@
 {
    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
-   "version": "1.18.4",
+   "version": "1.18.8",
    "description": "Tool to flash OS images to SD cards & USB drives.",
    "homepage": "https://balena.io/etcher",
    "license": "Apache-2.0",
    "architecture": {
       "64bit": {
-         "url": "https://github.com/balena-io/etcher/releases/download/v1.18.4/balenaEtcher-1.18.4-win.zip",
-         "hash": "176252a0dca5eab631400745d21c728d2a06ca66e1891875aa95b7db45d690b6"
+         "url": "https://github.com/balena-io/etcher/releases/download/v1.18.8/balenaEtcher-1.18.8-win.zip",
+         "hash": "4afd6c9f6584eb6210d60298222472e054604e412d72e594a26cb208ab99cc0c"
       },
       "32bit": {
-         "url": "https://github.com/balena-io/etcher/releases/download/v1.18.4/balenaEtcher-1.18.4-ia32-win.zip",
-         "hash": "bc10fa5a1c6544c38835fb639f8b57c38c1bc4eeaadb0c4b1458c0d840615413"
+         "url": "https://github.com/balena-io/etcher/releases/download/v1.18.8/balenaEtcher-1.18.8-ia32-win.zip",
+         "hash": "f86f8887eb086b643f9737f6617ae31ddd32037072e4449bc1c3b5c11c042e6b"
       }
    },
    "shortcuts": [
