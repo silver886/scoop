@@ -29,6 +29,13 @@
          ") | Set-Content -Path \"$dir\\remove-startup.ps1\""
       ]
    },
+   "uninstaller": {
+      "script": [
+         "if ($cmd -eq 'uninstall') {",
+         "   .\"$dir\\remove-startup.ps1\""
+         "}"
+      ]
+   },
    "shortcuts": [
       [
          "Unsplash Wallpapers.exe",
