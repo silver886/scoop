@@ -32,7 +32,7 @@
    "uninstaller": {
       "script": [
          "if ($cmd -eq 'uninstall') {",
-         "   .\"$dir\\remove-startup.ps1\""
+         "   .\"$dir\\remove-startup.ps1\"",
          "}"
       ]
    },
