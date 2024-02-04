@@ -47,8 +47,8 @@
    },
    "uninstaller": {
       "script": [
+         "Remove-Item \"$(shortcut_folder $global)\\Microsoft Teams (work or school).lnk\" -Force",
          "if ($cmd -eq 'uninstall') {",
-         "   Remove-Item \"$(shortcut_folder $global)\\Microsoft Teams (work or school).lnk\" -Force",
          "   .\"$dir\\remove-startup.ps1\"",
          "}"
       ]
