@@ -1,11 +1,11 @@
 {
    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
-   "version": "2.9.8",
+   "version": "2.9.9",
    "description": "Free and Open Source AI Image Upscaler for Linux, MacOS and Windows built with Linux-First philosophy.",
    "homepage": "https://upscayl.github.io",
    "license": "AGPL-3.0",
-   "url": "https://github.com/upscayl/upscayl/releases/download/v2.9.8/upscayl-2.9.8-win.exe#/dl.exe",
-   "hash": "9fb867159886603e08de1e4aaeb0e77bd39eb6bdd765654d9c6bc1d4fc208da9",
+   "url": "https://github.com/upscayl/upscayl/releases/download/v2.9.9/upscayl-2.9.9-win.exe#/dl.exe",
+   "hash": "fde36c91f547ac2f10a8eb5fe96c24819cbfbd294036412d60d3ad2f41c44b99",
    "installer": {
       "script": [
          "Expand-7zipArchive -Path \"$dir\\dl.exe\" -DestinationPath \"$dir\\_tmp\" -Removal",
