@@ -1,6 +1,6 @@
 {
    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
-   "version": "0.34",
+   "version": "0.36",
    "description": "Curl-like access to AWS resources with AWS Signature Version 4 request signing.",
    "homepage": "https://github.com/okigan/awscurl",
    "license": {
@@ -8,8 +8,8 @@
       "url": "https://github.com/okigan/awscurl/blob/master/LICENSE"
    },
    "depends": "main/python",
-   "url": "https://github.com/okigan/awscurl/archive/v0.34.zip",
-   "hash": "d48524065b62aa086f306932a815ddc063d99e312205bd6c7610f188bfdf31e0",
+   "url": "https://github.com/okigan/awscurl/archive/v0.36.zip",
+   "hash": "238ae7f700aeb17f8afed603bbd1f355ad2304df97c7ed0b7cd742a76f1ec6e8",
    "installer": {
       "script": [
          "python -m venv \"$dir\"",
