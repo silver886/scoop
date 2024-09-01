@@ -20,7 +20,7 @@ $CurrentServiceWinswExe = "$CurrentServiceDirectory\winsw.exe"
 $CurrentServiceWinswXml = "$CurrentServiceDirectory\winsw.xml"
 $CurrentServiceShimExe = "$Services\winsw-service-$Name.exe"
 $CurrentServiceShimConfig = "$Services\winsw-service-$Name.shim"
-$ShimExe = "$scoopdir\apps\scoop\current\supporting\shimexe\bin\shim.exe"
+$ShimExe = "$scoopdir\apps\scoop\current\supporting\shims\kiennq\shim.exe"
 
 switch ($Action) {
     'create' {
