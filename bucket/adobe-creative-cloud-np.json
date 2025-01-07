@@ -4,8 +4,16 @@
    "description": "This is a collection of 20+ desktop and mobile apps and services for photography, design, video, web, UX, and more.",
    "homepage": "https://www.adobe.com/creativecloud.html",
    "license": "Proprietary",
-   "url": "https://ccmdl.adobe.com/AdobeProducts/KCCC/CCD/6_1_0/win64/ACCCx6_1_0_587.zip",
-   "hash": "044382c501f0f9f4b0d8d0ab8293ba30935cd59f1e16a79231309947d3bac259",
+   "architecture": {
+      "64bit": {
+         "url": "https://ccmdl.adobe.com/AdobeProducts/KCCC/CCD/6_1_0/win64/ACCCx6_1_0_587.zip",
+         "hash": "044382c501f0f9f4b0d8d0ab8293ba30935cd59f1e16a79231309947d3bac259"
+      },
+      "arm64": {
+         "url": "https://ccmdl.adobe.com/AdobeProducts/KCCC/CCD/6_1_0/winarm64/ACCCx6_1_0_587.zip",
+         "hash": "3804d0dfe4fd4f079a97a1bd4e8dbd266dc58a6db230a6998839c794a88b8d30"
+      }
+   },
    "installer": {
       "script": "Invoke-ExternalCommand \"$dir\\Set-up.exe\" -RunAs > $null"
    },
