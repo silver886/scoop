@@ -29,6 +29,13 @@
       "regex": "Version\\s*(\\d+(?:\\.\\d+)+),?\\s+(?:(?:was\\s+)?released|for\\s+Windows|\\(Windows)"
    },
    "autoupdate": {
-      "url": "https://ccmdl.adobe.com/AdobeProducts/KCCC/CCD/$majorVersion_$minorVersion_$patchVersion/win64/ACCCx$underscoreVersion.zip"
+      "architecture": {
+         "64bit": {
+            "url": "https://ccmdls.adobe.com/AdobeProducts/StandaloneBuilds/ACCC/ESD/$majorVersion.$minorVersion.$patchVersion/$buildVersion/win64/ACCCx$underscoreVersion.zip"
+         },
+         "arm64": {
+            "url": "https://ccmdls.adobe.com/AdobeProducts/StandaloneBuilds/ACCC/ESD/$majorVersion.$minorVersion.$patchVersion/$buildVersion/winarm64/ACCCx$underscoreVersion.zip"
+         }
+      }
    }
 }
