@@ -8,10 +8,6 @@
       "64bit": {
          "url": "https://github.com/balena-io/etcher/releases/download/v1.18.11/balenaEtcher-1.18.11-win.zip",
          "hash": "3b783f50186a538d1dda2ef7f4651e27e4f94fb221cec937eb387ac3d0612319"
-      },
-      "32bit": {
-         "url": "https://github.com/balena-io/etcher/releases/download/v1.18.11/balenaEtcher-1.18.11-ia32-win.zip",
-         "hash": "ddae4464a8060a13086385e40a0fe5b6eeefb817b6862edafedd0128d063d72a"
       }
    },
    "shortcuts": [
@@ -26,10 +22,7 @@
    "autoupdate": {
       "architecture": {
          "64bit": {
-            "url": "https://github.com/balena-io/etcher/releases/download/v$version/balenaEtcher-$version-win.zip"
-         },
-         "32bit": {
-            "url": "https://github.com/balena-io/etcher/releases/download/v$version/balenaEtcher-$version-ia32-win.zip"
+            "url": "https://github.com/balena-io/etcher/releases/download/v$version/balenaEtcher-win32-x64-$version.zip"
          }
       }
    }
