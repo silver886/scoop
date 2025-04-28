@@ -1,56 +1,68 @@
-lockfileVersion: '6.0'
+lockfileVersion: '9.0'
 
 settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-devDependencies:
-  prettier:
-    specifier: ^2.8.8
-    version: 2.8.8
-  prettier-plugin-multiline-arrays:
-    specifier: ^2.0.0
-    version: 2.0.0
+importers:
+
+  .:
+    devDependencies:
+      prettier:
+        specifier: ^2.8.8
+        version: 2.8.8
+      prettier-plugin-multiline-arrays:
+        specifier: ^2.0.0
+        version: 2.0.0
 
 packages:
 
-  /@augment-vir/common@13.5.0:
+  '@augment-vir/common@13.5.0':
     resolution: {integrity: sha512-kOnAOShZTaOJ8glYyi2K3hfiYV5zQyjpfc4jmHm5lySAFNMpOjKA7pZxpl8n3RCIHAt+nFP64vuxtSI6jSWOZw==}
-    dependencies:
-      type-fest: 3.13.1
-    dev: true
 
-  /@augment-vir/common@15.6.1:
+  '@augment-vir/common@15.6.1':
     resolution: {integrity: sha512-c9UaBzB95tHzganl0B3DsONyP6Fk7JXf95rYUf+Wuu6f6unOPZDz1GXMTaRuFiRl2vb5xjBAGz9AYIc1Uin2Fw==}
-    dependencies:
-      type-fest: 4.3.2
-    dev: true
 
-  /prettier-plugin-multiline-arrays@2.0.0:
+  prettier-plugin-multiline-arrays@2.0.0:
     resolution: {integrity: sha512-EFdtxNqEKSehtSZN2rHUtsA7dqV6fu1iJ4WU8fgR23Scfcf6mcVb3leOWmAkhhHEpwsNKPdSNN9pBX8Xx8AsCg==}
-    dependencies:
-      '@augment-vir/common': 15.6.1
-      proxy-vir: 0.0.1
-    dev: true
 
-  /prettier@2.8.8:
+  prettier@2.8.8:
     resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
     engines: {node: '>=10.13.0'}
     hasBin: true
-    dev: true
 
-  /proxy-vir@0.0.1:
+  proxy-vir@0.0.1:
     resolution: {integrity: sha512-K3sv2I9kigOqt17hMhvWjSiwx90hpxxD3rN+meVQhrGKoxhVbt82ulkm3i1KlenVIMS1KFskt/vltMlGHVQrMw==}
-    dependencies:
-      '@augment-vir/common': 13.5.0
-    dev: true
 
-  /type-fest@3.13.1:
+  type-fest@3.13.1:
     resolution: {integrity: sha512-tLq3bSNx+xSpwvAJnzrK0Ep5CLNWjvFTOp71URMaAEWBfRb9nnJiBoUe0tF8bI4ZFO3omgBR6NvnbzVUT3Ly4g==}
     engines: {node: '>=14.16'}
-    dev: true
 
-  /type-fest@4.3.2:
+  type-fest@4.3.2:
     resolution: {integrity: sha512-VpwuOgnTsQUUWi0id8Hl4/xiQ+OoaeJGe8dnFjzubJYe/lOc2/d1Qx/d3FqWR0FlpOG/cvukAXfB12A49Y4iiA==}
     engines: {node: '>=16'}
-    dev: true
+
+snapshots:
+
+  '@augment-vir/common@13.5.0':
+    dependencies:
+      type-fest: 3.13.1
+
+  '@augment-vir/common@15.6.1':
+    dependencies:
+      type-fest: 4.3.2
+
+  prettier-plugin-multiline-arrays@2.0.0:
+    dependencies:
+      '@augment-vir/common': 15.6.1
+      proxy-vir: 0.0.1
+
+  prettier@2.8.8: {}
+
+  proxy-vir@0.0.1:
+    dependencies:
+      '@augment-vir/common': 13.5.0
+
+  type-fest@3.13.1: {}
+
+  type-fest@4.3.2: {}
