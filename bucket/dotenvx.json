@@ -1,6 +1,6 @@
 {
    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
-   "version": "1.44.2",
+   "version": "1.45.1",
    "description": "a better dotenv–from the creator of `dotenv`",
    "homepage": "https://github.com/dotenvx/dotenvx",
    "license": {
@@ -9,12 +9,12 @@
    },
    "architecture": {
       "32bit": {
-         "url": "https://github.com/dotenvx/dotenvx/releases/download/v1.44.2/dotenvx-1.44.2-windows-x86_64.tar.gz",
-         "hash": "98ffd87860fd6116ea6c9fb186c4f8f90ba0bc882f51e8e352d3f78044cca043"
+         "url": "https://github.com/dotenvx/dotenvx/releases/download/v1.45.1/dotenvx-1.45.1-windows-x86_64.tar.gz",
+         "hash": "89c099f90038b1a1a53f4c7d7a67ad07982ed4bc97e8baabf7f44a4fe3605481"
       },
       "64bit": {
-         "url": "https://github.com/dotenvx/dotenvx/releases/download/v1.44.2/dotenvx-1.44.2-windows-amd64.tar.gz",
-         "hash": "210743e955109326f52c9c91e5842330ba7e48d96bbe589fee09487c094786ca"
+         "url": "https://github.com/dotenvx/dotenvx/releases/download/v1.45.1/dotenvx-1.45.1-windows-amd64.tar.gz",
+         "hash": "ee0c0a429c7742716dabe5fcc9351833790438fc973fcbd85057a095b6eb15ed"
       }
    },
    "bin": "dotenvx.exe",
