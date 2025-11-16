@@ -1,6 +1,7 @@
-[CmdletBinding(PositionalBinding = $false)]
-param(
-    [string]$Name = "Default",
+[CmdletBinding()]
+param (
+    [Parameter(Mandatory)]
+    [string]$Name,
 
     [Parameter(ValueFromRemainingArguments)]
     [string[]]$Arg
