@@ -12,11 +12,8 @@ if (Get-Command pwsh -ErrorAction SilentlyContinue) {
 }
 
 & $Shell -NoProfile -Command {
-    $UserProfileBak = $env:UserProfile
     $env:UserProfile = Join-Path $dir 'profiles' $Name
 
     New-Item -ItemType Directory -Path $env:UserProfile -Force > $null
     gemini @Arg
-
-    $env:UserProfile = $UserProfileBak
-}
+}.ToString().Replace('$Name', "'$Name'").Replace('@Arg', "$Arg")
