@@ -24,7 +24,7 @@
    ],
    "bin": [
       [
-         "pnpm.exe",
+         "pnpm",
          "gemini",
          "dlx",
          "@google/gemini-cli@0.15.3"
@@ -38,7 +38,7 @@
       "url": "https://registry.npmjs.com/@google/gemini-cli/$version",
       "bin": [
          [
-            "pnpm.exe",
+            "pnpm",
             "gemini",
             "dlx",
             "@google/gemini-cli@$version"
