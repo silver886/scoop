@@ -1,6 +1,6 @@
 [CmdletBinding(PositionalBinding = $false)]
 param(
-    [string]$ProfileName = "Default",
+    [string]$Name = "Default",
 
     [Parameter(ValueFromRemainingArguments)]
     [string[]]$Arg
@@ -13,7 +13,7 @@ if (Get-Command pwsh -ErrorAction SilentlyContinue) {
 
 & $Shell -NoProfile -Command {
     $UserProfileBak = $env:UserProfile
-    $env:UserProfile = Join-Path $dir 'profiles' $ProfileName
+    $env:UserProfile = Join-Path $dir 'profiles' $Name
 
     New-Item -ItemType Directory -Path $env:UserProfile -Force > $null
     gemini @Arg
