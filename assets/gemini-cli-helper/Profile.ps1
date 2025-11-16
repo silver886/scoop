@@ -13,7 +13,7 @@ if (Get-Command pwsh -ErrorAction SilentlyContinue) {
 }
 
 & $Shell -NoProfile -Command {
-    $env:UserProfile = Join-Path $dir 'profiles' $Name
+    $env:UserProfile = Join-Path $persist_dir 'profiles' $Name
 
     New-Item -ItemType Directory -Path $env:UserProfile -Force > $null
     gemini @Arg
