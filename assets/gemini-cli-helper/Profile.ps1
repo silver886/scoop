@@ -13,8 +13,21 @@ if (Get-Command pwsh -ErrorAction SilentlyContinue) {
 }
 
 & $Shell -NoProfile -Command {
-    $env:UserProfile = Join-Path $persist_dir 'profiles' $Name
+    $MasterGeminiDir = Join-Path $env:UserProfile '.gemini'
+    $env:UserProfile = Join-Path '$persist_dir' 'profiles' $Name
+    $GeminiDir = Join-Path $env:UserProfile '.gemini'
 
-    New-Item -ItemType Directory -Path $env:UserProfile -Force > $null
+    New-Item -ItemType Directory -Path $GeminiDir -Force > $null
+
+    @(
+        '.env',
+        'settings.json'
+    ) | ForEach-Object {
+        $ConfigPath = Join-Path $GeminiDir $_
+        if (-not (Test-Path $ConfigPath)) {
+            Copy-Item -Path (Join-Path $MasterGeminiDir $_) -Destination $ConfigPath > $null
+        }
+    }
+
     gemini @Arg
 }.ToString().Replace('$Name', "'$Name'").Replace('@Arg', "$Arg")
