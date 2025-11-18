@@ -29,5 +29,5 @@ if (Get-Command pwsh -ErrorAction SilentlyContinue) {
         }
     }
 
-    dotenvx --log-level warn run --env-file (Join-Path $GeminiDir '.env') -- gemini @Arg
+    dotenvx --quiet run --env-file (Join-Path $GeminiDir '.env') -- gemini @Arg
 }.ToString().Replace('$Name', "'$Name'").Replace('@Arg', "$Arg")
