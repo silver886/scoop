@@ -29,5 +29,5 @@ if (Get-Command pwsh -ErrorAction SilentlyContinue) {
         }
     }
 
-    gemini @Arg
+    dotenvx run -f (Join-Path $GeminiDir '.env') -- gemini @Arg
 }.ToString().Replace('$Name', "'$Name'").Replace('@Arg', "$Arg")
