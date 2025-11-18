@@ -7,27 +7,22 @@ param (
     [string[]]$Arg
 )
 
-$Shell = 'powershell'
-if (Get-Command pwsh -ErrorAction SilentlyContinue) {
-    $Shell = 'pwsh'
+$UserProfile = Join-Path '$persist_dir' 'profiles' $Name
+
+$GeminiDir = Join-Path $UserProfile '.gemini'
+New-Item -ItemType Directory -Path $GeminiDir -Force > $null
+
+@(
+    '.env',
+    'settings.json'
+) | ForEach-Object {
+    $ConfigPath = Join-Path $GeminiDir $_
+    if (-not (Test-Path $ConfigPath)) {
+        Copy-Item -Path (Join-Path $env:UserProfile '.gemini' $_) -Destination $ConfigPath > $null
+    }
 }
 
-& $Shell -NoProfile -Command {
-    $MasterGeminiDir = Join-Path $env:UserProfile '.gemini'
-    $env:UserProfile = Join-Path '$persist_dir' 'profiles' $Name
-    $GeminiDir = Join-Path $env:UserProfile '.gemini'
+$EnvPath = Join-Path $GeminiDir '.env'
+dotenvx --quiet set --plain UserProfile $UserProfile --env-file $EnvPath
 
-    New-Item -ItemType Directory -Path $GeminiDir -Force > $null
-
-    @(
-        '.env',
-        'settings.json'
-    ) | ForEach-Object {
-        $ConfigPath = Join-Path $GeminiDir $_
-        if (-not (Test-Path $ConfigPath)) {
-            Copy-Item -Path (Join-Path $MasterGeminiDir $_) -Destination $ConfigPath > $null
-        }
-    }
-
-    dotenvx --quiet run --env-file (Join-Path $GeminiDir '.env') -- gemini @Arg
-}.ToString().Replace('$Name', "'$Name'").Replace('@Arg', "$Arg")
+dotenvx --quiet run --overload --env-file $EnvPath -- gemini @Arg
