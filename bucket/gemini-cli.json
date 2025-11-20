@@ -9,40 +9,38 @@
    },
    "suggest": {
       "Node.js (Long Term Support)": "main/nodejs-lts",
-      "Node.js": "main/nodejs",
-      "pnpm": "main/pnpm"
+      "Node.js": "main/nodejs"
    },
-   "url": "https://registry.npmjs.com/@google/gemini-cli/0.16.0",
-   "hash": "1221c607840e8a24744efd01bafc3f637af17ded773fe36a53403e48801cd29c",
-   "pre_install": [
-      "if (where.exe /q node || $true) {",
-      "   error 'Node.js should be installed'",
-      "}",
-      "if (where.exe /q pnpm || $true) {",
-      "   error 'pnpm should be installed'",
-      "}"
+   "url": [
+      "https://github.com/google-gemini/gemini-cli/releases/download/v0.16.0/gemini.js",
+      "https://registry.npmjs.com/@google/gemini-cli/0.16.0#/package.json"
    ],
+   "hash": [
+      "04bfaa21082aa95b8e4330958d2f659c4c628ccd170e3e6fdfe44f91bb29c3d4",
+      "1221c607840e8a24744efd01bafc3f637af17ded773fe36a53403e48801cd29c"
+   ],
+   "installer": {
+      "script": [
+         "if (where.exe /q node || $true) {",
+         "   error 'Node.js should be installed'",
+         "}"
+      ]
+   },
    "bin": [
       [
-         "pnpm",
+         "node.exe",
          "gemini",
-         "dlx",
-         "@google/gemini-cli@0.16.0"
+         "$dir\\gemini.js"
       ]
    ],
    "checkver": {
-      "url": "https://registry.npmjs.com/@google/gemini-cli/latest",
-      "jsonpath": "$.version"
+      "url": "https://api.github.com/repos/google-gemini/gemini-cli/releases",
+      "regex": "\"tag_name\": *\"v([\\d\\.]+)\","
    },
    "autoupdate": {
-      "url": "https://registry.npmjs.com/@google/gemini-cli/$version",
-      "bin": [
-         [
-            "pnpm",
-            "gemini",
-            "dlx",
-            "@google/gemini-cli@$version"
-         ]
+      "url": [
+         "https://github.com/google-gemini/gemini-cli/releases/download/v$version/gemini.js",
+         "https://registry.npmjs.com/@google/gemini-cli/$version#/package.json"
       ]
    }
 }
