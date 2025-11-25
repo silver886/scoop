@@ -1,6 +1,6 @@
 {
    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
-   "version": "2.0.50",
+   "version": "2.0.52",
    "description": "An agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing routine tasks, explaining complex code, and handling git workflows -- all through natural language commands.",
    "homepage": "https://github.com/anthropics/claude-code",
    "license": {
@@ -11,8 +11,8 @@
       "Git for Windows": "main/git",
       "MSYS2": "main/msys2"
    },
-   "url": "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.0.50/win32-x64/claude.exe",
-   "hash": "4bfb8bf794484cbf4902baed20bfdd631f17e01c4b027d841c1903ece2eb44f5",
+   "url": "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.0.52/win32-x64/claude.exe",
+   "hash": "f8da34149d461b21a5a91791017caf7e4ff71cac91e1f95aea09c284b2920559",
    "installer": {
       "script": [
          "if (where.exe /q bash || $true) {",
