@@ -1,7 +1,7 @@
 {
    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
    "version": "1.0.0",
-   "description": "This fix ssh-pageant environment variable.",
+   "description": "This fixes ssh-pageant environment variable by setting `SSH_AUTH_SOCK` to a fixed path which ssh-pageant creates the socket at.",
    "notes": [
       "Add to startup:",
       "New-ItemProperty -Path HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run -Name 'Pageant SSH' -PropertyType String -Value \"$dir\\ssh-pageant-with-fixed-socket.vbs\"",
