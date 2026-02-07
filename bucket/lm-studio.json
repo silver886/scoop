@@ -1,13 +1,13 @@
 {
    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
-   "version": "0.4.1-1",
+   "version": "0.4.2-2",
    "description": "Run local LLMs like gpt-oss, Qwen3, Gemma3, DeepSeek and many more on your computer, privately and for free.",
    "homepage": "https://lmstudio.ai",
    "license": "MIT",
    "architecture": {
       "64bit": {
-         "url": "https://installers.lmstudio.ai/win32/x64/0.4.1-1/LM-Studio-0.4.1-1-x64.exe#/dl.exe",
-         "hash": "c8bcdcc0749445aef7a3972c4d185fc5637c5fc474647cc41137d998872ecb2e",
+         "url": "https://installers.lmstudio.ai/win32/x64/0.4.2-2/LM-Studio-0.4.2-2-x64.exe#/dl.exe",
+         "hash": "5549d04644d0fafe94cdbe9189f087fdfbec94c02999fb9e2aa5e600ac828430",
          "installer": {
             "script": [
                "Expand-7zipArchive -Path \"$dir\\dl.exe\" -DestinationPath \"$dir\\_tmp\" -Removal",
