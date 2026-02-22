@@ -1,11 +1,11 @@
 {
    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
-   "version": "2.2.4",
+   "version": "2.2.7",
    "description": "Smart browser selector for Windows.",
    "homepage": "https://github.com/mortenn/BrowserPicker/",
    "license": "MIT",
-   "url": "https://github.com/mortenn/BrowserPicker/releases/download/v2.2.4/portable.zip",
-   "hash": "0c82d380a77bc552640019d13742a86ea11175a4db58018029abd89b0e4080f0",
+   "url": "https://github.com/mortenn/BrowserPicker/releases/download/v2.2.7/portable.zip",
+   "hash": "9d54be491fc875b4d494961f2921586de0e813bc26fa81ce1f7c9a32da99ae88",
    "pre_install": "if (!(Test-Path \"$persist_dir\\config.reg\")) { New-Item \"$dir\\config.reg\" | Out-Null }",
    "installer": {
       "script": [
