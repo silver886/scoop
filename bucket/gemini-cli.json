@@ -1,6 +1,6 @@
 {
    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
-   "version": "0.32.0",
+   "version": "0.32.1",
    "description": "An open-source AI agent that brings the power of Gemini directly into your terminal.",
    "homepage": "https://github.com/google-gemini/gemini-cli",
    "license": {
@@ -12,12 +12,12 @@
       "Node.js": "main/nodejs"
    },
    "url": [
-      "https://github.com/google-gemini/gemini-cli/releases/download/v0.32.0/gemini.js",
-      "https://registry.npmjs.com/@google/gemini-cli/0.32.0#/package.json"
+      "https://github.com/google-gemini/gemini-cli/releases/download/v0.32.1/gemini.js",
+      "https://registry.npmjs.com/@google/gemini-cli/0.32.1#/package.json"
    ],
    "hash": [
-      "0c934fdf7b8e6d6309b3f015ce01cf18fb696019a77efe426859d9cb9bc01b1a",
-      "6e0d8c3dcc6c16418a66b55d543574753aec2f304d416603eac11f5f6280cc69"
+      "f46a73cea63ee6fbc3852b0a9cad633afc7941759e1b7cbb401d9460afeb676f",
+      "5ccc547be6d17cf46aa4188baa0fe1334e31d15e21d54bf2d46fdfda5c3e7588"
    ],
    "installer": {
       "script": [
