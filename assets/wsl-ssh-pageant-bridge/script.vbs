@@ -5,20 +5,32 @@ Set Env = WshShell.Environment("Process")
 Dim tmpDir
 tmpDir = WshShell.ExpandEnvironmentStrings("%TEMP%")
 
+Dim pathDirs
+pathDirs = Split(WshShell.ExpandEnvironmentStrings("%PATH%"), ";")
+
 Dim npiperelayWin
 npiperelayWin = ResolveFromPath("npiperelay")
 If npiperelayWin = "" Then
     WScript.Quit 1
 End If
+Env("WSPB_NPIPERELAY") = npiperelayWin
 
-' Main loop: bridge while WSL is alive, wait when it's not
+Dim wslenvParts
+wslenvParts = "WSPB_NPIPERELAY/up:WSPB_PIPE/u:WSPB_SCRIPT/up"
+
+Dim existingWslenv
+existingWslenv = WshShell.ExpandEnvironmentStrings("%WSLENV%")
+If existingWslenv = "%WSLENV%" Then
+    Env("WSLENV") = wslenvParts
+Else
+    Env("WSLENV") = existingWslenv & ":" & wslenvParts
+End If
+
 Do
-    ' Wait for WSL to be running
     Do While Not IsWslRunning()
         WScript.Sleep 5000
     Loop
 
-    ' Find pageant pipe (may have changed since last run)
     Dim pipePath
     pipePath = GetPageantPipe()
 
@@ -36,44 +48,30 @@ Do
     If pipePath = "" Then
         WScript.Sleep 5000
     Else
-        Env("WSPB_NPIPERELAY") = npiperelayWin
         Env("WSPB_PIPE") = Replace(pipePath, "\", "/")
 
-        Dim bashScript
-        bashScript = "#!/bin/bash" & vbLf & _
+        Dim tmpScript
+        tmpScript = tmpDir & "\" & FSO.GetTempName() & ".sh"
+        Dim f
+        Set f = FSO.CreateTextFile(tmpScript, True)
+        f.Write "#!/bin/bash" & vbLf & _
             "set -eu" & vbLf & _
             "SOCKET=$(eval echo ""${WSL_SSH_PAGEANT_BRIDGE_SOCK:?not set}"")" & vbLf & _
             "case ""$SOCKET"" in /*) ;; *) echo ""invalid socket path: $SOCKET"" >&2; exit 1;; esac" & vbLf & _
-            "if ss -xl 2>/dev/null | grep -qF ""$SOCKET""; then exit 0; fi" & vbLf & _
+            "if ss -xl 2>/dev/null | grep -qF ""$SOCKET""; then exit 42; fi" & vbLf & _
             "mkdir -p ""$(dirname ""$SOCKET"")""" & vbLf & _
             "rm -f ""$SOCKET""" & vbLf & _
             "rm -f ""$0""" & vbLf & _
             "exec socat \" & vbLf & _
             "  UNIX-LISTEN:""$SOCKET"",fork,mode=600 \" & vbLf & _
             "  EXEC:""$WSPB_NPIPERELAY -ei -s $WSPB_PIPE"",nofork" & vbLf
-
-        Dim tmpScript
-        tmpScript = tmpDir & "\" & FSO.GetTempName() & ".sh"
-        Dim f
-        Set f = FSO.CreateTextFile(tmpScript, True)
-        f.Write bashScript
         f.Close
 
         Env("WSPB_SCRIPT") = tmpScript
 
-        Dim wslenvParts
-        wslenvParts = "WSPB_NPIPERELAY/up:WSPB_PIPE/u:WSPB_SCRIPT/up"
-
-        Dim existingWslenv
-        existingWslenv = Env("WSLENV")
-        If existingWslenv <> "" Then
-            Env("WSLENV") = existingWslenv & ":" & wslenvParts
-        Else
-            Env("WSLENV") = wslenvParts
+        If WshShell.Run("wsl bash ""$WSPB_SCRIPT""", 0, True) = 42 Then
+            WScript.Quit 1
         End If
-
-        ' Blocks until socat exits (wsl killed, shutdown, crash)
-        WshShell.Run "wsl bash ""$WSPB_SCRIPT""", 0, True
     End If
 Loop
 
@@ -112,11 +110,9 @@ End Function
 
 Function ResolveFromPath(exeName)
     ResolveFromPath = ""
-    Dim dirs, i, candidate
-    dirs = Split(WshShell.ExpandEnvironmentStrings("%PATH%"), ";")
-    For i = 0 To UBound(dirs)
-        If Len(dirs(i)) > 0 Then
-            candidate = dirs(i) & "\" & exeName & ".exe"
+    For i = 0 To UBound(pathDirs)
+        If Len(pathDirs(i)) > 0 Then
+            candidate = pathDirs(i) & "\" & exeName & ".exe"
             If FSO.FileExists(candidate) Then
                 ResolveFromPath = candidate
                 Exit Function
