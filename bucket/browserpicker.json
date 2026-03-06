@@ -6,10 +6,12 @@
    "license": "MIT",
    "url": "https://github.com/mortenn/BrowserPicker/releases/download/v2.2.7/portable.zip",
    "hash": "9d54be491fc875b4d494961f2921586de0e813bc26fa81ce1f7c9a32da99ae88",
-   "pre_install": "if (!(Test-Path \"$persist_dir\\config.reg\")) { New-Item \"$dir\\config.reg\" | Out-Null }",
+   "pre_install": [
+      "if (!(Test-Path \"$persist_dir\\config.reg\")) { New-Item \"$dir\\config.reg\" | Out-Null }",
+      "if (-not (is_admin)) { abort 'This package requires admin privileges to install' }"
+   ],
    "installer": {
       "script": [
-         "if (-not (is_admin)) { abort 'This package requires admin privileges to install' }",
          "$browserPicker = \"$dir\\BrowserPicker.exe\"",
          "$registryPath = 'Registry::HKCR\\BrowserPicker'",
          "New-Item -Force -Path \"$registryPath\" > $null",
@@ -72,9 +74,9 @@
          "reg import \"$persist_dir\\config.reg\""
       ]
    },
+   "pre_uninstall": "if (-not (is_admin)) { abort 'This package requires admin privileges to uninstall' }",
    "uninstaller": {
       "script": [
-         "if (-not (is_admin)) { abort 'This package requires admin privileges to uninstall' }",
          "Remove-Item -Force -Recurse -Path 'Registry::HKCR\\BrowserPicker'",
          "Remove-Item -Force -Recurse -Path 'Registry::HKCU\\Software\\Clients\\StartMenuInternet\\BrowserPicker'",
          "Remove-ItemProperty -Force -Path 'Registry::HKCU\\Software\\RegisteredApplications' -Name 'BrowserPicker'",

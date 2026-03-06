@@ -19,13 +19,11 @@
       "f46a73cea63ee6fbc3852b0a9cad633afc7941759e1b7cbb401d9460afeb676f",
       "5ccc547be6d17cf46aa4188baa0fe1334e31d15e21d54bf2d46fdfda5c3e7588"
    ],
-   "installer": {
-      "script": [
-         "if (where.exe /q node || $true) {",
-         "   error 'Node.js should be installed'",
-         "}"
-      ]
-   },
+   "pre_install": [
+      "if (where.exe /q node || $true) {",
+      "   error 'Node.js should be installed'",
+      "}"
+   ],
    "bin": [
       [
          "node.exe",
