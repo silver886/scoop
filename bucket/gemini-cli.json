@@ -21,7 +21,7 @@
    ],
    "pre_install": [
       "if (where.exe /q node || $true) {",
-      "   error 'Node.js should be installed'",
+      "   abort 'Node.js should be installed'",
       "}"
    ],
    "bin": [

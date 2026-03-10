@@ -15,7 +15,7 @@
    "hash": "37e012da688493c799d385e9d1aa811661a3be41e837c7d5687d010aaf5c7a35",
    "pre_install": [
       "if (where.exe /q bash || $true) {",
-      "   error 'Bash should be installed'",
+      "   abort 'Bash should be installed'",
       "}"
    ],
    "bin": "claude.exe",
