@@ -302,6 +302,3 @@ while ($true) {
 
     [Threading.Thread]::Sleep(1000)
 }
-
-
-Stop-Transcript
