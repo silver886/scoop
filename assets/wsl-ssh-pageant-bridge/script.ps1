@@ -1,5 +1,9 @@
 $ErrorActionPreference = 'Stop'
 
+if (-not [Environment]::Is64BitProcess) {
+    $env:PATH = "$env:SystemRoot\Sysnative;$env:PATH"
+}
+
 function Write-LogDebug   ($msg) { [Console]::Error.WriteLine("$(Get-Date -Format o) [DEBUG] $msg") }
 function Write-LogInfo    ($msg) { [Console]::Error.WriteLine("$(Get-Date -Format o) [INFO] $msg") }
 function Write-LogWarning ($msg) { [Console]::Error.WriteLine("$(Get-Date -Format o) [WARN] $msg") }
@@ -7,7 +11,7 @@ function Write-LogError   ($msg) { [Console]::Error.WriteLine("$(Get-Date -Forma
 
 # Job Object: OS kills all assigned processes when the last handle closes.
 # Kill chain: Task Scheduler kills conhost -> parent watcher detects death ->
-# PowerShell exits -> Job Object handle closed -> wsl.exe killed ->
+# PowerShell exits -> Job Object handle closed -> all wsl.exe killed ->
 # bash receives SIGHUP -> trap kills socat + removes socket.
 Add-Type -TypeDefinition @'
 using System;
@@ -139,26 +143,56 @@ if [ -z "${WSL_SSH_PAGEANT_BRIDGE_SOCK:-}" ]; then echo "WSL_SSH_PAGEANT_BRIDGE_
 SOCKET=$(eval echo "$WSL_SSH_PAGEANT_BRIDGE_SOCK")
 case "$SOCKET" in /*) ;; *) echo "invalid socket path: $SOCKET" >&2; exit 3;; esac
 PIDFILE="${SOCKET}.pid"
-if ss -xl 2>/dev/null | grep -qF "$SOCKET"; then exit 5; fi
 mkdir -p "$(dirname "$SOCKET")" || exit 4
+# Kill orphaned socat from previous run (uses only /proc — works on all distros)
+kill_socat() {
+  kill "$1" 2>/dev/null || return 0
+  for _i in 1 2 3 4 5; do [ -d "/proc/$1" ] || return 0; sleep 0.1; done
+  kill -9 "$1" 2>/dev/null || true
+}
+# Fast path: use PID file if valid
+KILLED=false
+if [ -f "$PIDFILE" ]; then
+  OLD_PID=$(cat "$PIDFILE" 2>/dev/null || true)
+  if [ -n "$OLD_PID" ] && grep -qx socat "/proc/$OLD_PID/comm" 2>/dev/null \
+     && tr '\0' '\n' < "/proc/$OLD_PID/cmdline" 2>/dev/null | grep -qF "$SOCKET"; then
+    kill_socat "$OLD_PID"
+    KILLED=true
+  fi
+  rm -f "$PIDFILE"
+fi
+# Slow path: PID file missing/invalid but socket exists — scan /proc for orphaned socat
+if [ "$KILLED" = false ] && [ -S "$SOCKET" ]; then
+  for p in /proc/[0-9]*/comm; do
+    [ -f "$p" ] || continue
+    grep -qx socat "$p" 2>/dev/null || continue
+    pid="${p#/proc/}"; pid="${pid%/comm}"
+    tr '\0' '\n' < "/proc/$pid/cmdline" 2>/dev/null | grep -qF "$SOCKET" || continue
+    kill_socat "$pid"
+  done
+fi
 rm -f "$SOCKET"
 rm -f "$0"
 socat \
   UNIX-LISTEN:"$SOCKET",fork,mode=600 \
   EXEC:"$WSPB_NPIPERELAY -ei -s $WSPB_PIPE",nofork &
 SOCAT_PID=$!
-echo $SOCAT_PID > "$PIDFILE"
-trap 'kill $SOCAT_PID 2>/dev/null; rm -f "$SOCKET" "$PIDFILE"' EXIT
+echo "$SOCAT_PID" > "$PIDFILE"
+cleanup() {
+  kill "$SOCAT_PID" 2>/dev/null
+  if [ "$(cat "$PIDFILE" 2>/dev/null)" = "$SOCAT_PID" ]; then
+    rm -f "$SOCKET" "$PIDFILE"
+  fi
+}
+trap cleanup EXIT
 trap 'exit 0' TERM INT HUP
-wait $SOCAT_PID
-'@
-
-Set-Variable -Name 'CleanupScript' -Option Constant -Value @'
-S=$(eval echo "${WSL_SSH_PAGEANT_BRIDGE_SOCK:-}")
-P="${S}.pid"
-[ -f "$P" ] && kill -9 $(cat "$P") 2>/dev/null
-rm -f "$S" "$P"
-true
+# Monitor socat AND pidfile: exit if socat dies, pidfile removed, or pidfile changed
+while kill -0 "$SOCAT_PID" 2>/dev/null; do
+  if [ ! -f "$PIDFILE" ] || [ "$(cat "$PIDFILE" 2>/dev/null)" != "$SOCAT_PID" ]; then
+    break
+  fi
+  sleep 1
+done
 '@
 
 $pipePattern = [regex]'^pageant\..+\.[0-9a-f]{64}$'
@@ -169,8 +203,8 @@ function Find-PageantPipe {
     }
 }
 
-function Start-Wsl ($arguments) {
-    $psi = [Diagnostics.ProcessStartInfo]::new('wsl', $arguments)
+function Start-Wsl ($distro, $arguments) {
+    $psi = [Diagnostics.ProcessStartInfo]::new('wsl', "-d $distro $arguments")
     $psi.UseShellExecute = $false
     $psi.CreateNoWindow = $true
     return [Diagnostics.Process]::Start($psi)
@@ -183,21 +217,39 @@ function Assert-ParentAlive {
     }
 }
 
+function Get-RunningDistros {
+    $output = wsl --list --running --quiet 2>$null
+    if ($LASTEXITCODE -ne 0) { return @() }
+    @($output | ForEach-Object { ($_ -replace '\x00', '').Trim() } | Where-Object { $_ })
+}
+
+$bridges = @{}
+$failed = [Collections.Generic.HashSet[string]]::new()
+
 while ($true) {
-    Write-LogInfo 'Waiting for WSL...'
-    wsl --list --running 2>$null >$null
-    while ($LASTEXITCODE -ne 0) {
-        Assert-ParentAlive
+    Assert-ParentAlive
+
+    $distros = Get-RunningDistros
+    if ($distros.Count -eq 0) {
+        Write-LogInfo 'No WSL instances running, waiting...'
         [Threading.Thread]::Sleep(5000)
-        wsl --list --running 2>$null >$null
+        continue
     }
-    Write-LogInfo 'WSL is running'
 
-    # Kill orphaned socat from previous runs using PID file (targets only our instance)
-    Write-LogDebug 'Cleaning up orphaned socat...'
-    $cleanup = Start-Wsl ('bash -c "' + ($CleanupScript -replace '"', '\"' -replace '\r?\n', '; ') + '"')
-    $cleanup.WaitForExit(5000) >$null
+    # Clear tracking for distros that stopped (allows retry when they restart)
+    foreach ($name in @($bridges.Keys)) {
+        if ($name -notin $distros) {
+            Write-LogInfo "[$name] Distro stopped"
+            $bridges.Remove($name)
+        }
+    }
+    foreach ($name in @($failed)) {
+        if ($name -notin $distros) {
+            $failed.Remove($name) | Out-Null
+        }
+    }
 
+    # Find pageant pipe (shared across all distros)
     $pipePath = Find-PageantPipe
     if (-not $pipePath) {
         Write-LogWarning 'Pageant pipe not found, starting pageant...'
@@ -215,28 +267,41 @@ while ($true) {
         [Threading.Thread]::Sleep(5000)
         continue
     }
-    Write-LogDebug "Pageant pipe = $pipePath"
-
     $env:WSPB_PIPE = $pipePath.Replace('\', '/')
 
-    $tmpScript = [IO.Path]::Combine($env:TEMP, [IO.Path]::GetRandomFileName() + '.sh')
-    [IO.File]::WriteAllText($tmpScript, $BridgeScript)
-    $env:WSPB_SCRIPT = $tmpScript
+    foreach ($distro in $distros) {
+        if ($failed.Contains($distro)) { continue }
 
-    Write-LogInfo 'Launching socat bridge...'
-    $wslProc = Start-Wsl 'bash "$WSPB_SCRIPT"'
-    $job.AssignProcess($wslProc.Handle)
-    Write-LogDebug "wsl.exe PID $($wslProc.Id) assigned to Job Object"
+        # Check existing bridge
+        if ($bridges.ContainsKey($distro)) {
+            if (-not $bridges[$distro].HasExited) { continue }
 
-    while (-not $wslProc.HasExited) {
-        Assert-ParentAlive
-        [Threading.Thread]::Sleep(500)
+            $exitCode = $bridges[$distro].ExitCode
+            $bridges.Remove($distro)
+
+            if ($exitCode -in 2, 3, 4) {
+                Write-LogError "[$distro] bash exited with config error ($exitCode)"
+                $failed.Add($distro) | Out-Null
+                continue
+            }
+            Write-LogWarning "[$distro] socat exited ($exitCode), restarting..."
+        }
+
+        # Write temp script and launch bridge
+        $tmpScript = [IO.Path]::Combine($env:TEMP, [IO.Path]::GetRandomFileName() + '.sh')
+        [IO.File]::WriteAllText($tmpScript, $BridgeScript.Replace("`r`n", "`n"))
+        $env:WSPB_SCRIPT = $tmpScript
+
+        Write-LogInfo "[$distro] Launching socat bridge..."
+        $wslProc = Start-Wsl $distro 'bash "$WSPB_SCRIPT"'
+        $job.AssignProcess($wslProc.Handle)
+        Write-LogDebug "[$distro] wsl.exe PID $($wslProc.Id) assigned to Job Object"
+
+        $bridges[$distro] = $wslProc
     }
-    $exitCode = $wslProc.ExitCode
 
-    if ($exitCode -in 2, 3, 4, 5) {
-        Write-LogError "bash exited with config error ($exitCode)"
-        exit $exitCode
-    }
-    Write-LogWarning "socat exited ($exitCode), restarting..."
+    [Threading.Thread]::Sleep(1000)
 }
+
+
+Stop-Transcript
