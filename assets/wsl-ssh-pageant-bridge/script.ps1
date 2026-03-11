@@ -250,7 +250,7 @@ done
         }
         foreach ($name in @($failed)) {
             if ($name -notin $distros) {
-                $failed.Remove($name) | Out-Null
+                $failed.Remove($name) > $null
             }
         }
 
@@ -284,7 +284,7 @@ done
 
                 if ($exitCode -in 2, 3, 4) {
                     Write-LogError "[$distro] bash exited with config error ($exitCode)"
-                    $failed.Add($distro) | Out-Null
+                    $failed.Add($distro) > $null
                     continue
                 }
                 Write-LogWarning "[$distro] socat exited ($exitCode), restarting..."
