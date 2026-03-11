@@ -1,5 +1,5 @@
 param(
-    [string]$Paths = "C:\users\ll\fork;C:\users\ll\greenhouse",
+    [string]$Paths = [System.IO.File]::ReadAllText((Join-Path $PSScriptRoot 'project_path')).Trim(),
     [int]$MaxDepth = [int]::MaxValue
 )
 
