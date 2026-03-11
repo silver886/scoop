@@ -6,14 +6,14 @@ $ConfigPath = Join-Path $AppDir "config.json"
 
 # --- Helpers ---
 
-function Load-Config {
+function Import-Config {
     if (Test-Path $ConfigPath) {
         return Get-Content $ConfigPath -Raw | ConvertFrom-Json
     }
     return [PSCustomObject]@{ default_distro = ""; aliases = @() }
 }
 
-function Save-Config($cfg) {
+function Export-Config($cfg) {
     $cfg | ConvertTo-Json -Depth 10 | Set-Content $ConfigPath -Encoding UTF8
 }
 
@@ -40,7 +40,7 @@ function Do-Add($params) {
     }
     if (!$names) { Write-Host "Usage: wsl-shim add <name>... [-d <distro>] [-f]"; exit 1 }
 
-    $cfg = Load-Config
+    $cfg = Import-Config
     $list = [Collections.ArrayList]@($cfg.aliases)
 
     foreach ($n in $names) {
@@ -66,7 +66,7 @@ function Do-Add($params) {
     }
 
     $cfg.aliases = @($list)
-    Save-Config $cfg
+    Export-Config $cfg
 }
 
 function Do-Rm($params) {
@@ -75,7 +75,7 @@ function Do-Rm($params) {
         if ($p -eq "--all") { $all = $true } else { $names += $p }
     }
 
-    $cfg = Load-Config
+    $cfg = Import-Config
     $list = [Collections.ArrayList]@($cfg.aliases)
     if ($all) { $names = @($list | ForEach-Object name) }
     if (!$names) { Write-Host "Usage: wsl-shim rm <name>... [--all]"; exit 1 }
@@ -94,11 +94,11 @@ function Do-Rm($params) {
     }
 
     $cfg.aliases = @($list)
-    Save-Config $cfg
+    Export-Config $cfg
 }
 
 function Do-List {
-    $cfg = Load-Config
+    $cfg = Import-Config
     if (!$cfg.aliases -or $cfg.aliases.Count -eq 0) {
         Write-Host "No aliases. Use 'wsl-shim add <name>' to create one."
         return
@@ -116,7 +116,7 @@ function Do-List {
 }
 
 function Do-Config($params) {
-    $cfg = Load-Config
+    $cfg = Import-Config
     if (!$params -or $params.Count -eq 0) {
         Write-Host ""
         Write-Host "  distro:  $(if ($cfg.default_distro) { $cfg.default_distro } else { '(wsl default)' })"
@@ -136,7 +136,7 @@ function Do-Config($params) {
             }
         }
     }
-    Save-Config $cfg
+    Export-Config $cfg
 }
 
 function Show-Help {

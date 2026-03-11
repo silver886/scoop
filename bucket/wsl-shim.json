@@ -11,11 +11,11 @@
       "   abort 'wsl should be installed'",
       "}",
       "if (!(Test-Path \"$dir\\bin\")) { New-Item -ItemType Directory -Path \"$dir\\bin\" > $null }",
-      "if (!(Test-Path \"$dir\\config.json\")) { Set-Content -Path \"$dir\\config.json\" -Content '{\"default_distro\":\"\",\"aliases\":[]}' }"
+      "if (!(Test-Path \"$dir\\config.json\")) { Set-Content -Path \"$dir\\config.json\" -Value '{\"default_distro\":\"\",\"aliases\":[]}' }"
    ],
    "bin": [
       [
-         "wsl-shim.ps1",
+         "script.ps1",
          "wsl-shim"
       ]
    ],
