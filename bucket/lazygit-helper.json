@@ -12,7 +12,7 @@
       "if (where.exe /q lazygit || $true) {",
       " abort 'lazygit should be installed'",
       "}",
-      "if (!(Test-Path \"$persist_dir\\project_path\")) { New-Item \"$dir\\project_path\" > $null }"
+      "if (!(Test-Path \"$persist_dir\\project_path\")) { New-Item -Path \"$dir\\project_path\" > $null }"
    ],
    "installer": {
       "script": [
@@ -40,9 +40,8 @@
          "lg"
       ],
       [
-         "powershell",
-         "lgp",
-         "-NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"$dir\\project.ps1\""
+         "project.ps1",
+         "lgp"
       ]
 
    ],
