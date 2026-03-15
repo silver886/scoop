@@ -18,7 +18,7 @@ try {
     # Job Object: OS kills all assigned processes when the last handle closes.
     # Kill chain: Task Scheduler kills conhost -> parent watcher detects death ->
     # PowerShell exits -> Job Object handle closed -> all wsl.exe killed ->
-    # bash receives SIGHUP -> trap kills socat + removes socket.
+    # sh receives SIGHUP -> trap kills socat + removes socket.
     Add-Type -TypeDefinition @'
 using System;
 using System.Runtime.InteropServices;
@@ -143,7 +143,7 @@ public class JobObject : IDisposable {
     Write-LogDebug "WSLENV = $env:WSLENV"
 
     Set-Variable -Name 'BridgeScript' -Option Constant -Value @'
-#!/bin/bash
+#!/bin/sh
 set -euo pipefail
 if [ -z "${WSL_SSH_PAGEANT_BRIDGE_SOCK:-}" ]; then echo "WSL_SSH_PAGEANT_BRIDGE_SOCK not set" >&2; exit 2; fi
 SOCKET=$(eval echo "$WSL_SSH_PAGEANT_BRIDGE_SOCK")
@@ -283,7 +283,7 @@ done
                 $bridges.Remove($distro)
 
                 if ($exitCode -in 2, 3, 4) {
-                    Write-LogError "[$distro] bash exited with config error ($exitCode)"
+                    Write-LogError "[$distro] sh exited with config error ($exitCode)"
                     $failed.Add($distro) > $null
                     continue
                 }
@@ -295,7 +295,7 @@ done
             $env:WSPB_SCRIPT = $tmpScript
 
             Write-LogInfo "[$distro] Launching socat bridge..."
-            $wslProc = Start-Wsl $distro 'bash "$WSPB_SCRIPT"'
+            $wslProc = Start-Wsl $distro 'sh "$WSPB_SCRIPT"'
             $job.AssignProcess($wslProc.Handle)
             Write-LogDebug "[$distro] wsl.exe PID $($wslProc.Id) assigned to Job Object"
 
