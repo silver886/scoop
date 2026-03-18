@@ -1,6 +1,6 @@
 {
    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
-   "version": "0.7.10",
+   "version": "0.7.11",
    "description": "A free, open source, and extensible speech-to-text application that works completely offline.",
    "homepage": "https://github.com/cjpais/Handy",
    "license": {
@@ -9,12 +9,12 @@
    },
    "architecture": {
       "64bit": {
-         "url": "https://github.com/cjpais/Handy/releases/download/v0.7.10/Handy_0.7.10_x64_en-US.msi",
-         "hash": "ceb643b8ce2963dfc724727fd99f3a3f44abf7e965654a7be4133ac67acbf5f8"
+         "url": "https://github.com/cjpais/Handy/releases/download/v0.7.11/Handy_0.7.11_x64_en-US.msi",
+         "hash": "1306a55f31ca02cd76ab96596b623304d52b737a20de600c544b61765674ff8a"
       },
       "arm64": {
-         "url": "https://github.com/cjpais/Handy/releases/download/v0.7.10/Handy_0.7.10_arm64_en-US.msi",
-         "hash": "1889e75d307d43b57d373e12bf0a2a1ef86ae1b5db349ed45ab18fd729724d0f"
+         "url": "https://github.com/cjpais/Handy/releases/download/v0.7.11/Handy_0.7.11_arm64_en-US.msi",
+         "hash": "be153d9c7486278501802a5df5b164af6872e166b1c53f963dc2b456a921742e"
       }
    },
    "extract_dir": "PFiles/Handy",
