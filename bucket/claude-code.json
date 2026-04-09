@@ -1,6 +1,6 @@
 {
    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
-   "version": "2.1.94",
+   "version": "2.1.97",
    "description": "An agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing routine tasks, explaining complex code, and handling git workflows -- all through natural language commands.",
    "homepage": "https://github.com/anthropics/claude-code",
    "license": {
@@ -11,8 +11,8 @@
       "Node.js (Long Term Support)": "main/nodejs-lts",
       "Node.js": "main/nodejs"
    },
-   "url": "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.1.94.tgz",
-   "hash": "sha1:ce7eb277e592cfb4d3368af17a7690d39566aebd",
+   "url": "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.1.97.tgz",
+   "hash": "sha1:b790d417b4f47b897068ffff9b57812ccc81e707",
    "extract_dir": "package",
    "pre_install": [
       "if (where.exe /q node || $true) {",
