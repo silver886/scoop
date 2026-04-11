@@ -1,6 +1,6 @@
 {
    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
-   "version": "26032.208.4399.5",
+   "version": "26072.519.4556.7438",
    "description": "Proprietary business communication platform developed by Microsoft",
    "homepage": "https://adoption.microsoft.com/new-microsoft-teams/",
    "license": {
@@ -8,16 +8,16 @@
    },
    "architecture": {
       "32bit": {
-         "url": "https://statics.teams.cdn.office.net/production-windows-x86/26032.208.4399.5/MSTeams-x86.msix#/dl.zip",
-         "hash": "8a2a4f5ea7c553f58dc89274a07e965d393ab9ab5699d3fd52e55403e5f998b9"
+         "url": "https://statics.teams.cdn.office.net/production-windows-x86/26072.519.4556.7438/MSTeams-x86.msix#/dl.zip",
+         "hash": "890fda544fdfba0744e6762fc241ee3ac65b8fb41f07a4629a3a6a85963a18c3"
       },
       "64bit": {
-         "url": "https://statics.teams.cdn.office.net/production-windows-x64/26032.208.4399.5/MSTeams-x64.msix#/dl.zip",
-         "hash": "d485c30215f76e679860b1281157a2714a6242771f0a2944547adccd25083345"
+         "url": "https://statics.teams.cdn.office.net/production-windows-x64/26072.519.4556.7438/MSTeams-x64.msix#/dl.zip",
+         "hash": "e31c1049ce50dad199643c4d016c3379c211e43fc4abc73bdad56c644cbc6a77"
       },
       "arm64": {
-         "url": "https://statics.teams.cdn.office.net/production-windows-arm64/26032.208.4399.5/MSTeams-arm64.msix#/dl.zip",
-         "hash": "dca05df266fe018463eaa5061fb2d80ae477c66327dcaea08267bb10113618c4"
+         "url": "https://statics.teams.cdn.office.net/production-windows-arm64/26072.519.4556.7438/MSTeams-arm64.msix#/dl.zip",
+         "hash": "8365bc99a182eec9e8b003c74a7bfd1a09fc607b0a4d8c64571961400e339f71"
       }
    },
    "pre_install": [
