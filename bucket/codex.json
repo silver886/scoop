@@ -1,0 +1,54 @@
+{
+   "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
+   "version": "0.120.0",
+   "description": "A coding agent from OpenAI that runs locally on your computer.",
+   "homepage": "https://github.com/openai/codex",
+   "license": {
+      "identifier": "Apache-2.0",
+      "url": "https://github.com/openai/codex/blob/master/LICENSE.md"
+   },
+   "architecture": {
+      "64bit": {
+         "url": "https://registry.npmjs.org/@openai/codex/-/codex-0.120.0-win32-x64.tgz",
+         "hash": "sha1:20db917cbc131b39745c578600fa374cd2edf0fb",
+         "extract_dir": "package\\vendor\\x86_64-pc-windows-msvc"
+      },
+      "arm64": {
+         "url": "https://registry.npmjs.org/@openai/codex/-/codex-0.120.0-win32-arm64.tgz",
+         "hash": "sha1:da314013a9e581ad81068b27334c3ddc397202df",
+         "extract_dir": "package\\vendor\\aarch64-pc-windows-msvc"
+      }
+   },
+   "bin": [
+      [
+         "codex\\codex.exe",
+         "codex"
+      ]
+   ],
+   "persist": "config",
+   "env_set": {
+      "CODEX_HOME": "$dir\\config"
+   },
+   "checkver": {
+      "url": "https://registry.npmjs.com/@openai/codex",
+      "jsonpath": "$.dist-tags.latest"
+   },
+   "autoupdate": {
+      "architecture": {
+         "64bit": {
+            "url": "https://registry.npmjs.org/@openai/codex/-/codex-$version-win32-x64.tgz",
+            "hash": {
+               "url": "https://registry.npmjs.org/@openai/codex/$version-win32-x64",
+               "jsonpath": "$.dist.shasum"
+            }
+         },
+         "arm64": {
+            "url": "https://registry.npmjs.org/@openai/codex/-/codex-$version-win32-arm64.tgz",
+            "hash": {
+               "url": "https://registry.npmjs.org/@openai/codex/$version-win32-arm64",
+               "jsonpath": "$.dist.shasum"
+            }
+         }
+      }
+   }
+}
