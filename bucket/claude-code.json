@@ -1,40 +1,53 @@
 {
    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
-   "version": "2.1.114",
+   "version": "2.1.116",
    "description": "An agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing routine tasks, explaining complex code, and handling git workflows -- all through natural language commands.",
    "homepage": "https://github.com/anthropics/claude-code",
    "license": {
       "identifier": "Proprietary",
       "url": "https://github.com/anthropics/claude-code/blob/master/LICENSE.md"
    },
-   "suggest": {
-      "Node.js (Long Term Support)": "main/nodejs-lts",
-      "Node.js": "main/nodejs"
+   "architecture": {
+      "64bit": {
+         "url": "https://registry.npmjs.org/@anthropic-ai/claude-code-win32-x64/-/claude-code-win32-x64-2.1.116.tgz",
+         "hash": "sha1:d10ce445500c7695d4d5a89b1dd45ad8b8b62293"
+      },
+      "arm64": {
+         "url": "https://registry.npmjs.org/@anthropic-ai/claude-code-win32-arm64/-/claude-code-win32-arm64-2.1.116.tgz",
+         "hash": "sha1:385e407c3a5403b4e813e72d2002533c7d19f87d"
+      }
    },
-   "url": "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.1.114.tgz",
-   "hash": "sha1:42f8b092074c60ad2b2724a12bc37b49661fdb7b",
    "extract_dir": "package",
-   "pre_install": [
-      "if (where.exe /q node || $true) {",
-      "   abort 'Node.js should be installed'",
-      "}"
-   ],
    "bin": [
       [
-         "node.exe",
-         "claude",
-         "$dir\\cli.js"
+         "claude.exe",
+         "claude"
       ]
    ],
+   "persist": "config",
+   "env_set": {
+      "CLAUDE_CONFIG_DIR": "$dir\\config"
+   },
    "checkver": {
       "url": "https://registry.npmjs.com/@anthropic-ai/claude-code",
       "jsonpath": "$.dist-tags.latest"
    },
    "autoupdate": {
-      "url": "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-$version.tgz",
-      "hash": {
-         "url": "https://registry.npmjs.org/@anthropic-ai/claude-code/$version",
-         "jsonpath": "$.dist.shasum"
+      "architecture": {
+         "64bit": {
+            "url": "https://registry.npmjs.org/@anthropic-ai/claude-code-win32-x64/-/claude-code-win32-x64-$version.tgz",
+            "hash": {
+               "url": "https://registry.npmjs.org/@anthropic-ai/claude-code-win32-x64/$version",
+               "jsonpath": "$.dist.shasum"
+            }
+         },
+         "arm64": {
+            "url": "https://registry.npmjs.org/@anthropic-ai/claude-code-win32-arm64/-/claude-code-win32-arm64-$version.tgz",
+            "hash": {
+               "url": "https://registry.npmjs.org/@anthropic-ai/claude-code-win32-arm64/$version",
+               "jsonpath": "$.dist.shasum"
+            }
+         }
       }
    }
 }
