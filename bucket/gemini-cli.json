@@ -1,6 +1,6 @@
 {
    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
-   "version": "0.39.1",
+   "version": "0.40.0",
    "description": "An open-source AI agent that brings the power of Gemini directly into your terminal.",
    "homepage": "https://github.com/google-gemini/gemini-cli",
    "license": {
@@ -11,8 +11,8 @@
       "Node.js (Long Term Support)": "main/nodejs-lts",
       "Node.js": "main/nodejs"
    },
-   "url": "https://github.com/google-gemini/gemini-cli/releases/download/v0.39.1/gemini-cli-bundle.zip",
-   "hash": "256aa71dc0108ce6a04c612b1e474ace05360f0a5efb3e23d9b34ec0d328321c",
+   "url": "https://github.com/google-gemini/gemini-cli/releases/download/v0.40.0/gemini-cli-bundle.zip",
+   "hash": "7eedf030b4afde67c5adc27b840c6a98a750309b225f1ba0e24b3ad65f14ea9d",
    "pre_install": [
       "if (where.exe /q node || $true) {",
       "   abort 'Node.js should be installed'",
