@@ -21,7 +21,7 @@
    },
    "bin": [
       [
-         "codex\\codex.exe",
+         "bin\\codex.exe",
          "codex"
       ]
    ],
