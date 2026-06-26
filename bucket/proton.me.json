@@ -1,18 +1,18 @@
 {
    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
-   "version": "0.1.3",
+   "version": "0.2.1",
    "description": "Wraps https://proton.me/.",
    "homepage": "https://github.com/silver886/NEST/",
    "license": "MIT",
    "url": [
-      "https://github.com/silver886/NEST/releases/download/v0.1.3/me.proton.exe",
-      "https://github.com/silver886/NEST/archive/refs/tags/v0.1.3.zip"
+      "https://github.com/silver886/NEST/releases/download/v0.2.1/me.proton.exe",
+      "https://github.com/silver886/NEST/archive/refs/tags/v0.2.1.zip"
    ],
    "hash": [
-      "e98b203b06efc6dcfc2c2da451cc2350fefffc566fa515a1f81eb78ca21253b9",
-      "dd0a05d6669fa52cc76a116d2f45eac3b4932401aaeffa25c87caee42ff3752b"
+      "c894ac8bc6a543dae4ab669f8bd427f32ee5dfcaac8f9baea30cf270c99d350e",
+      "18dbc9520eebe5e8e56557a6b6022862bfbde9e1ca96cd1a9a726d184a03e08c"
    ],
-   "extract_dir": "nest-0.1.3\\icon\\proton\\ico",
+   "extract_dir": "nest-0.2.1\\icon\\proton\\ico",
    "extract_to": "",
    "installer": {
       "script": [
