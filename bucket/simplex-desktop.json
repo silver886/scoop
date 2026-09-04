@@ -1,11 +1,11 @@
 {
    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
-   "version": "7.0.1",
+   "version": "7.0.2",
    "description": "The first messaging network operating without user identifiers of any kind - 100% private by design!",
    "homepage": "https://simplex.chat/",
    "license": "AGPL-3.0",
-   "url": "https://github.com/simplex-chat/simplex-chat/releases/download/v7.0.1/simplex-desktop-windows-x86_64.msi#/dl.msi",
-   "hash": "bcb227c15189615a3dd67193e1cb5842f4873c24e53d2e33284dbcae48dbb810",
+   "url": "https://github.com/simplex-chat/simplex-chat/releases/download/v7.0.2/simplex-desktop-windows-x86_64.msi#/dl.msi",
+   "hash": "d6514e01e95c9f6f8b9e4001f7eb505519f068c77e1edba1dabbf3f076bb8cb2",
    "extract_dir": "SimpleX",
    "shortcuts": [
       [
