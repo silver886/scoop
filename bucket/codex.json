@@ -1,6 +1,6 @@
 {
    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
-   "version": "0.159.2",
+   "version": "0.159.3",
    "description": "A coding agent from OpenAI that runs locally on your computer.",
    "homepage": "https://github.com/openai/codex",
    "license": {
@@ -9,13 +9,13 @@
    },
    "architecture": {
       "64bit": {
-         "url": "https://registry.npmjs.org/@openai/codex/-/codex-0.159.2-win32-x64.tgz",
-         "hash": "sha1:5cadab29078fcaf6eebb092c64c3b260a2533a8c",
+         "url": "https://registry.npmjs.org/@openai/codex/-/codex-0.159.3-win32-x64.tgz",
+         "hash": "sha1:dfab40a8dec05bf893b2b7c54d01193617414d4b",
          "extract_dir": "package\\vendor\\x86_64-pc-windows-msvc"
       },
       "arm64": {
-         "url": "https://registry.npmjs.org/@openai/codex/-/codex-0.159.2-win32-arm64.tgz",
-         "hash": "sha1:ac8b2537f9bf84198b8ad89d82385058c765a41b",
+         "url": "https://registry.npmjs.org/@openai/codex/-/codex-0.159.3-win32-arm64.tgz",
+         "hash": "sha1:b7f6dac1212eebef80de368ef5fd7e0bd018fba2",
          "extract_dir": "package\\vendor\\aarch64-pc-windows-msvc"
       }
    },
