@@ -1,6 +1,6 @@
 {
    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
-   "version": "2.38.1",
+   "version": "2.38.2",
    "description": "a better dotenv–from the creator of `dotenv`",
    "homepage": "https://github.com/dotenvx/dotenvx",
    "license": {
@@ -9,12 +9,12 @@
    },
    "architecture": {
       "32bit": {
-         "url": "https://github.com/dotenvx/dotenvx/releases/download/v2.38.1/dotenvx-2.38.1-windows-x86_64.tar.gz",
-         "hash": "635d3b989324a30ea58826b9fa17b0c1ab303c5b0acb60aba797359854d8e0d9"
+         "url": "https://github.com/dotenvx/dotenvx/releases/download/v2.38.2/dotenvx-2.38.2-windows-x86_64.tar.gz",
+         "hash": "8cc1669bc716e3c9b56ba2f81386e30addeef69c7e3aa292fd34506943ccdf58"
       },
       "64bit": {
-         "url": "https://github.com/dotenvx/dotenvx/releases/download/v2.38.1/dotenvx-2.38.1-windows-amd64.tar.gz",
-         "hash": "330552ca4f2b897cdc064ab65ad710eb4728aabe5f5a0eb3a23a74d88d76b1f1"
+         "url": "https://github.com/dotenvx/dotenvx/releases/download/v2.38.2/dotenvx-2.38.2-windows-amd64.tar.gz",
+         "hash": "675142d9ce6fc8677a6984bda175c68f016146119b59230b523fc2de4211ee06"
       }
    },
    "bin": "dotenvx.exe",
