@@ -1,11 +1,11 @@
 {
    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
-   "version": "3.2.4",
+   "version": "3.2.5",
    "description": "Smart browser selector for Windows.",
    "homepage": "https://github.com/mortenn/BrowserPicker/",
    "license": "MIT",
-   "url": "https://github.com/mortenn/BrowserPicker/releases/download/v3.2.4/portable.zip",
-   "hash": "3b55aa602846626dd01f63b9fb8e8b061cc2687b5f4adb0fa31adc211cfcfc08",
+   "url": "https://github.com/mortenn/BrowserPicker/releases/download/v3.2.5/portable.zip",
+   "hash": "7cdfe1d820fd3dc6c962fe6c79843cbaf182b0c67542b594a5936a0a471d95a9",
    "pre_install": [
       "if (!(Test-Path \"$persist_dir\\config.reg\")) { New-Item \"$dir\\config.reg\" > $null }",
       "if (-not (is_admin)) { abort 'This package requires admin privileges to install' }"
