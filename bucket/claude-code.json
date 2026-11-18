@@ -1,6 +1,6 @@
 {
    "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
-   "version": "2.1.326",
+   "version": "2.1.327",
    "description": "An agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing routine tasks, explaining complex code, and handling git workflows -- all through natural language commands.",
    "homepage": "https://github.com/anthropics/claude-code",
    "license": {
@@ -9,12 +9,12 @@
    },
    "architecture": {
       "64bit": {
-         "url": "https://registry.npmjs.org/@anthropic-ai/claude-code-win32-x64/-/claude-code-win32-x64-2.1.326.tgz",
-         "hash": "sha1:805f6d8d044d92508fdaf7e8fdcbb2a94bfda267"
+         "url": "https://registry.npmjs.org/@anthropic-ai/claude-code-win32-x64/-/claude-code-win32-x64-2.1.327.tgz",
+         "hash": "sha1:c6bdf96180fdaa2a8d365fbb8a20d6e6310d50e7"
       },
       "arm64": {
-         "url": "https://registry.npmjs.org/@anthropic-ai/claude-code-win32-arm64/-/claude-code-win32-arm64-2.1.326.tgz",
-         "hash": "sha1:4dd0a34b6d9fd57dc0e7c8478efb49638433c143"
+         "url": "https://registry.npmjs.org/@anthropic-ai/claude-code-win32-arm64/-/claude-code-win32-arm64-2.1.327.tgz",
+         "hash": "sha1:39af2f13bd31d8af6e9c309e6a926d6ab3e05e0f"
       }
    },
    "extract_dir": "package",
